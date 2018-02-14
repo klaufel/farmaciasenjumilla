@@ -38,7 +38,7 @@ class FarmaciasRow extends Component {
   constructor(props) {
     super(props);
     this.item = this.props.farmaciasListado.map((item, idx) =>
-      <tr>
+      <tr key={idx}>
         <td>{item.id}</td>
         <td>{item.name}</td>
         <td>{item.address}</td>
@@ -57,21 +57,52 @@ function getDateActual() {
   return date.getDate() + '/' + ((date.getMonth() < 9 ? '0': '') + (date.getMonth()+1))  + '/' + date.getFullYear();
 }
 
+function getFarmaciaGuardia() {
+  const dateActual = getDateActual();
+  const dateIndex = getIndex(dateActual, pharmaciesDateJSON, 'date');
+  const dateId = pharmaciesDateJSON[dateIndex].id;
+
+  const farmaciaIndex = getIndex(dateId, pharmaciesListJSON, 'id')
+  const farmaciaActual = pharmaciesListJSON[farmaciaIndex];
+
+  const farmacia = {
+    name: farmaciaActual.name,
+    address: farmaciaActual.address,
+    phone: farmaciaActual.phone
+  }
+  return farmacia;
+}
+
 class FarmaciaGuardia extends Component {
+
+  constructor() {
+    super();
+    const farmaciaActual = getFarmaciaGuardia();
+    this.state = {
+      name: farmaciaActual.name,
+      address: farmaciaActual.address,
+      phone: farmaciaActual.phone
+    }
+  }
+
+  componentDidMount() {
+    setInterval( () => {
+      const farmaciaActual = getFarmaciaGuardia();
+      this.setState({
+        name: farmaciaActual.name,
+        address: farmaciaActual.address,
+        phone: farmaciaActual.phone
+      })
+    }, 10000)
+  }
+
   render() {
-    const dateActual = getDateActual();
-    const dateIndex = getIndex(dateActual, pharmaciesDateJSON, 'date');
-    const dateId = pharmaciesDateJSON[dateIndex].id;
-
-    const farmaciaIndex = getIndex(dateId, pharmaciesListJSON, 'id')
-    const farmaciaActual = pharmaciesListJSON[farmaciaIndex];
-
     return (
       <div className="jumbotron">
         <p>Farmacia de guardia (hoy {getDateActual()})</p>
-        <h1>{farmaciaActual.name}</h1>
-        <p>{farmaciaActual.address}</p>
-        <p>{farmaciaActual.phone}</p>
+        <h1>{this.state.name}</h1>
+        <p>{this.state.address}</p>
+        <p>{this.state.phone}</p>
       </div>
     )
   }
