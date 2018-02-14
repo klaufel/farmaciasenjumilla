@@ -1,0 +1,44 @@
+[
+  {
+    "id": 1,
+    "name": "Manuel Guillén",
+    "address": "Calle Cánovas del Castillo, 22, 30520 Jumilla, Murcia",
+    "phone": "968 78 01 65"
+  },
+  {
+    "id": 2,
+    "name": "Miguel Cambronero",
+    "address": "Calle Ortega y Gasset, 36, 30520 Jumilla, Murcia",
+    "phone": "968 78 28 01"
+  },
+  {
+    "id": 3,
+    "name": "Pedro Soriano",
+    "address": "Av. de Levante, 30520 Jumilla, Murcia",
+    "phone": "968 78 00 05"
+  },
+  {
+    "id": 4,
+    "name": "Aurora Azorín",
+    "address": "Calle Cánovas del Castillo, 50, 30520 Jumilla, Murcia",
+    "phone": "968 78 01 30"
+  },
+  {
+    "id": 5,
+    "name": "Diego Soriano",
+    "address": "Calle Cánovas del Castillo, 109, 30520 Jumilla, Murcia",
+    "phone": "968 78 25 08"
+  },
+  {
+    "id": 6,
+    "name": "Manuel Mazuelas",
+    "address": "Calle Barón del Solar, 30520 Jumilla, Murcia",
+    "phone": "968 78 23 15"
+  },
+  {
+    "id": 7,
+    "name": "Alberto Agulló",
+    "address": "Calle Canalejas, 38, 30520 Jumilla, Murcia",
+    "phone": "968 78 00 88"
+  }
+]
