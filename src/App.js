@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import pharmaciesDateJSON from './json/pharmaciesDate.json';
 import pharmaciesListJSON from './json/pharmaciesList.json';
+import logo from './img/logo.svg';
 
 function getIndex(value, arr, prop) {
   for(var i = 0; i < arr.length; i++) {
@@ -11,9 +12,102 @@ function getIndex(value, arr, prop) {
   return -1; //to handle the case where the value doesn't exist
 }
 
+
+class FarmaciasGuardiaListado extends Component {
+  render() {
+    return (
+      <div>
+        <br/>
+        <h3>Listado de farmacias de guardia Jumilla:</h3>
+        <table className="table table-striped table-bordered table-hover">
+          <thead>
+            <tr>
+              <th>Fecha</th>
+              <th>Farmacia</th>
+              <th>Dirección</th>
+              <th>Teléfono</th>
+            </tr>
+          </thead>
+          <FarmaciasGuardiaListadoRow farmaciasListado={pharmaciesDateJSON} />
+        </table>
+      </div>
+    )
+  }
+}
+
+
+class FarmaciasGuardiaListadoRow extends Component {
+  constructor(props) {
+    super(props);
+    this.item = this.props.farmaciasListado.map((item, idx) => {
+      return(
+        <FarmaciasGuardiaListadoCol
+          farmaciaDate={item.date}
+          farmaciaId={item.id}
+          key={idx}
+        />
+      )
+    });
+  }
+
+  render() {
+    return( <tbody>{this.item}</tbody> );
+  }
+}
+
+
+class FarmaciasGuardiaListadoCol extends Component {
+  constructor(props) {
+    super(props);
+    const farmaciaActual = getFarmacia(this.props.farmaciaId);
+    this.state = {
+      date: this.props.farmaciaDate,
+      id: this.props.farmaciaId,
+      name: farmaciaActual.name,
+      address: farmaciaActual.address,
+      phone: farmaciaActual.phone
+    }
+  }
+
+  componentDidMount() {
+    setInterval( () => {
+      const farmaciaActual = getFarmacia(this.props.farmaciaId);
+      this.setState({
+        date: this.props.farmaciaDate,
+        id: this.props.farmaciaId,
+        name: farmaciaActual.name,
+        address: farmaciaActual.address,
+        phone: farmaciaActual.phone
+      })
+    }, 10000)
+  }
+  render() {
+    const dateActual = getDateActual();
+    return(
+      <tr className={(this.state.date === dateActual ? 'is-actual' : '')}>
+        <td>{this.state.date}</td>
+        <td>{this.state.name}</td>
+        <td><a href={"https://www.google.es/maps/search/" + this.state.address} target="_blank">{this.state.address}</a></td>
+        <td><a href={"tel:" + removeWhiteSpaces(this.state.phone)}>{this.state.phone}</a></td>
+      </tr>
+    );
+  }
+}
+
+function removeWhiteSpaces(string) {
+  var i = 0, length = string.length;
+
+   for (i; i < length; i++) {
+     string = string.replace(' ', '');
+
+   }
+
+  return string;
+}
+
+
 class Farmacias extends Component {
   render() {
-
     return (
       <div>
         <br/>
@@ -73,6 +167,20 @@ function getFarmaciaGuardia() {
   return farmacia;
 }
 
+
+function getFarmacia(farmaciaId) {
+  const farmaciaIndex = getIndex(farmaciaId, pharmaciesListJSON, 'id')
+  const farmaciaActual = pharmaciesListJSON[farmaciaIndex];
+
+  const farmacia = {
+    id: farmaciaActual.id,
+    name: farmaciaActual.name,
+    address: farmaciaActual.address,
+    phone: farmaciaActual.phone
+  }
+  return farmacia;
+}
+
 class FarmaciaGuardia extends Component {
 
   constructor() {
@@ -116,13 +224,15 @@ class Header extends Component {
       <nav className="navbar navbar-default navbar-fixed-top">
         <div className="container">
           <div className="navbar-header">
-            <span className="navbar-brand">Farmacia de Guardia Jumilla</span>
+
+            <span className="navbar-brand"><img src={logo} width="24" height="24" className="App-logo" alt="logo" /> Farmacia de Guardia Jumilla</span>
           </div>
         </div>
       </nav>
     )
   }
 }
+
 class App extends Component {
 
   render() {
@@ -132,7 +242,8 @@ class App extends Component {
       <div className="App container">
         <Header />
         <FarmaciaGuardia />
-        <Farmacias />
+        <FarmaciasGuardiaListado />
+        {/*<Farmacias />*/}
       </div>
     )
   }

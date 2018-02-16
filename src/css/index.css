@@ -16,8 +16,8 @@ body {
 article,
 aside,
 details,
-figcaption,
 figure,
+figcaption,
 footer,
 header,
 hgroup,
@@ -5772,4 +5772,14 @@ button.close {
 
 body {
   padding-top: 70px;
+}
+
+.App-logo {
+  float: left;
+  margin-right: 10px;
+  margin-top: -2px;
+}
+
+.is-actual {
+  background-color: #d0e1d3 !important;
 }
