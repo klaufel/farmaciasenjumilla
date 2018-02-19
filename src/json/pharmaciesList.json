@@ -5,7 +5,7 @@
     "address": "Calle Cánovas del Castillo, 22, 30520 Jumilla, Murcia",
     "phone": "968 78 01 65",
     "hours": {
-      "monday": {
+      "1": {
         "morning": {
           "opening": "9:00",
           "closing": "14:00"
@@ -15,7 +15,7 @@
           "closing": "21:00"
         }
       },
-      "tuesday": {
+      "2": {
         "morning": {
           "opening": "9:00",
           "closing": "14:00"
@@ -25,7 +25,7 @@
           "closing": "21:00"
         }
       },
-      "wednesday": {
+      "3": {
         "morning": {
           "opening": "9:00",
           "closing": "14:00"
@@ -35,7 +35,7 @@
           "closing": "21:00"
         }
       },
-      "thursday": {
+      "4": {
         "morning": {
           "opening": "9:00",
           "closing": "14:00"
@@ -45,7 +45,7 @@
           "closing": "21:00"
         }
       },
-      "friday": {
+      "5": {
         "morning": {
           "opening": "9:00",
           "closing": "14:00"
@@ -55,7 +55,7 @@
           "closing": "21:00"
         }
       },
-      "saturday": {
+      "6": {
         "morning": {
           "opening": "9:00",
           "closing": "14:00"
@@ -65,7 +65,7 @@
           "closing": "21:00"
         }
       },
-      "sunday": {
+      "7": {
         "morning": {
           "opening": "9:00",
           "closing": "14:00"
@@ -83,7 +83,7 @@
     "address": "Calle Ortega y Gasset, 36, 30520 Jumilla, Murcia",
     "phone": "968 78 28 01",
     "hours": {
-      "monday": {
+      "1": {
         "morning": {
           "opening": "9:00",
           "closing": "14:00"
@@ -93,7 +93,7 @@
           "closing": "21:00"
         }
       },
-      "tuesday": {
+      "2": {
         "morning": {
           "opening": "9:00",
           "closing": "14:00"
@@ -103,7 +103,7 @@
           "closing": "21:00"
         }
       },
-      "wednesday": {
+      "3": {
         "morning": {
           "opening": "9:00",
           "closing": "14:00"
@@ -113,7 +113,7 @@
           "closing": "21:00"
         }
       },
-      "thursday": {
+      "4": {
         "morning": {
           "opening": "9:00",
           "closing": "14:00"
@@ -123,7 +123,7 @@
           "closing": "21:00"
         }
       },
-      "friday": {
+      "5": {
         "morning": {
           "opening": "9:00",
           "closing": "14:00"
@@ -133,7 +133,7 @@
           "closing": "21:00"
         }
       },
-      "saturday": {
+      "6": {
         "morning": {
           "opening": "9:00",
           "closing": "14:00"
@@ -143,7 +143,7 @@
           "closing": "21:00"
         }
       },
-      "sunday": {
+      "7": {
         "morning": {
           "opening": "9:00",
           "closing": "14:00"
@@ -161,7 +161,7 @@
     "address": "Av. de Levante, 30520 Jumilla, Murcia",
     "phone": "968 78 00 05",
     "hours": {
-      "monday": {
+      "1": {
         "morning": {
           "opening": "9:00",
           "closing": "14:00"
@@ -171,7 +171,7 @@
           "closing": "21:00"
         }
       },
-      "tuesday": {
+      "2": {
         "morning": {
           "opening": "9:00",
           "closing": "14:00"
@@ -181,7 +181,7 @@
           "closing": "21:00"
         }
       },
-      "wednesday": {
+      "3": {
         "morning": {
           "opening": "9:00",
           "closing": "14:00"
@@ -191,7 +191,7 @@
           "closing": "21:00"
         }
       },
-      "thursday": {
+      "4": {
         "morning": {
           "opening": "9:00",
           "closing": "14:00"
@@ -201,7 +201,7 @@
           "closing": "21:00"
         }
       },
-      "friday": {
+      "5": {
         "morning": {
           "opening": "9:00",
           "closing": "14:00"
@@ -211,7 +211,7 @@
           "closing": "21:00"
         }
       },
-      "saturday": {
+      "6": {
         "morning": {
           "opening": "9:00",
           "closing": "14:00"
@@ -221,7 +221,7 @@
           "closing": "21:00"
         }
       },
-      "sunday": {
+      "7": {
         "morning": {
           "opening": "9:00",
           "closing": "14:00"
@@ -239,7 +239,7 @@
     "address": "Calle Cánovas del Castillo, 50, 30520 Jumilla, Murcia",
     "phone": "968 78 01 30",
     "hours": {
-      "monday": {
+      "1": {
         "morning": {
           "opening": "9:00",
           "closing": "14:00"
@@ -249,7 +249,7 @@
           "closing": "21:00"
         }
       },
-      "tuesday": {
+      "2": {
         "morning": {
           "opening": "9:00",
           "closing": "14:00"
@@ -259,7 +259,7 @@
           "closing": "21:00"
         }
       },
-      "wednesday": {
+      "3": {
         "morning": {
           "opening": "9:00",
           "closing": "14:00"
@@ -269,7 +269,7 @@
           "closing": "21:00"
         }
       },
-      "thursday": {
+      "4": {
         "morning": {
           "opening": "9:00",
           "closing": "14:00"
@@ -279,7 +279,7 @@
           "closing": "21:00"
         }
       },
-      "friday": {
+      "5": {
         "morning": {
           "opening": "9:00",
           "closing": "14:00"
@@ -289,7 +289,7 @@
           "closing": "21:00"
         }
       },
-      "saturday": {
+      "6": {
         "morning": {
           "opening": "9:00",
           "closing": "14:00"
@@ -299,7 +299,7 @@
           "closing": "21:00"
         }
       },
-      "sunday": {
+      "7": {
         "morning": {
           "opening": "9:00",
           "closing": "14:00"
@@ -317,7 +317,7 @@
     "address": "Calle Cánovas del Castillo, 109, 30520 Jumilla, Murcia",
     "phone": "968 78 25 08",
     "hours": {
-      "monday": {
+      "1": {
         "morning": {
           "opening": "9:00",
           "closing": "14:00"
@@ -327,7 +327,7 @@
           "closing": "21:00"
         }
       },
-      "tuesday": {
+      "2": {
         "morning": {
           "opening": "9:00",
           "closing": "14:00"
@@ -337,7 +337,7 @@
           "closing": "21:00"
         }
       },
-      "wednesday": {
+      "3": {
         "morning": {
           "opening": "9:00",
           "closing": "14:00"
@@ -347,7 +347,7 @@
           "closing": "21:00"
         }
       },
-      "thursday": {
+      "4": {
         "morning": {
           "opening": "9:00",
           "closing": "14:00"
@@ -357,7 +357,7 @@
           "closing": "21:00"
         }
       },
-      "friday": {
+      "5": {
         "morning": {
           "opening": "9:00",
           "closing": "14:00"
@@ -367,7 +367,7 @@
           "closing": "21:00"
         }
       },
-      "saturday": {
+      "6": {
         "morning": {
           "opening": "9:00",
           "closing": "14:00"
@@ -377,7 +377,7 @@
           "closing": "21:00"
         }
       },
-      "sunday": {
+      "7": {
         "morning": {
           "opening": "9:00",
           "closing": "14:00"
@@ -395,7 +395,7 @@
     "address": "Calle Barón del Solar, 30520 Jumilla, Murcia",
     "phone": "968 78 23 15",
     "hours": {
-      "monday": {
+      "1": {
         "morning": {
           "opening": "9:00",
           "closing": "14:00"
@@ -405,7 +405,7 @@
           "closing": "21:00"
         }
       },
-      "tuesday": {
+      "2": {
         "morning": {
           "opening": "9:00",
           "closing": "14:00"
@@ -415,7 +415,7 @@
           "closing": "21:00"
         }
       },
-      "wednesday": {
+      "3": {
         "morning": {
           "opening": "9:00",
           "closing": "14:00"
@@ -425,7 +425,7 @@
           "closing": "21:00"
         }
       },
-      "thursday": {
+      "4": {
         "morning": {
           "opening": "9:00",
           "closing": "14:00"
@@ -435,7 +435,7 @@
           "closing": "21:00"
         }
       },
-      "friday": {
+      "5": {
         "morning": {
           "opening": "9:00",
           "closing": "14:00"
@@ -445,7 +445,7 @@
           "closing": "21:00"
         }
       },
-      "saturday": {
+      "6": {
         "morning": {
           "opening": "9:00",
           "closing": "14:00"
@@ -455,7 +455,7 @@
           "closing": "21:00"
         }
       },
-      "sunday": {
+      "7": {
         "morning": {
           "opening": "9:00",
           "closing": "14:00"
@@ -473,7 +473,7 @@
     "address": "Calle Canalejas, 38, 30520 Jumilla, Murcia",
     "phone": "968 78 00 88",
     "hours": {
-      "monday": {
+      "1": {
         "morning": {
           "opening": "9:00",
           "closing": "14:00"
@@ -483,7 +483,7 @@
           "closing": "21:00"
         }
       },
-      "tuesday": {
+      "2": {
         "morning": {
           "opening": "9:00",
           "closing": "14:00"
@@ -493,7 +493,7 @@
           "closing": "21:00"
         }
       },
-      "wednesday": {
+      "3": {
         "morning": {
           "opening": "9:00",
           "closing": "14:00"
@@ -503,7 +503,7 @@
           "closing": "21:00"
         }
       },
-      "thursday": {
+      "4": {
         "morning": {
           "opening": "9:00",
           "closing": "14:00"
@@ -513,7 +513,7 @@
           "closing": "21:00"
         }
       },
-      "friday": {
+      "5": {
         "morning": {
           "opening": "9:00",
           "closing": "14:00"
@@ -523,7 +523,7 @@
           "closing": "21:00"
         }
       },
-      "saturday": {
+      "6": {
         "morning": {
           "opening": "9:00",
           "closing": "14:00"
@@ -533,7 +533,7 @@
           "closing": "21:00"
         }
       },
-      "sunday": {
+      "7": {
         "morning": {
           "opening": "9:00",
           "closing": "14:00"

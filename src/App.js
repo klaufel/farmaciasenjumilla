@@ -5,7 +5,7 @@ import FarmaciaGuardia from './components/FarmaciaGuardia';
 import FarmaciasGuardiaListado from './components/FarmaciasGuardiaListado';
 
 
-//DEV import Farmacias from './components/Farmacias';
+import Farmacias from './components/Farmacias';
 
 class App extends Component {
 
@@ -16,7 +16,7 @@ class App extends Component {
         <div className="container">
           <FarmaciaGuardia />
           <FarmaciasGuardiaListado />
-          {/*<Farmacias />*/}
+          <Farmacias />
         </div>
         <Footer />
       </div>

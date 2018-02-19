@@ -22,3 +22,23 @@ export function getDateActual() {
   const date = new Date();
   return date.getDate() + '/' + ((date.getMonth() < 9 ? '0': '') + (date.getMonth()+1))  + '/' + date.getFullYear();
 }
+
+export function getDayWeekNumber(){
+  const date = new Date();
+  const days = [7, 1, 2, 3, 4, 5, 6];
+  return days[date.getUTCDay()];
+};
+
+export function getDayWeekString(){
+  const date = new Date();
+  const days = [
+    "Domingo",
+    "Lunes",
+    "Martes",
+    "Miércoles",
+    "Jueves",
+    "Viernes",
+    "Sábado"
+  ];
+  return days[date.getUTCDay()];
+};
