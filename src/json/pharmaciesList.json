@@ -3,42 +3,546 @@
     "id": 1,
     "name": "Manuel Guillén",
     "address": "Calle Cánovas del Castillo, 22, 30520 Jumilla, Murcia",
-    "phone": "968 78 01 65"
+    "phone": "968 78 01 65",
+    "hours": {
+      "monday": {
+        "morning": {
+          "opening": "9:00",
+          "closing": "14:00"
+        },
+        "late": {
+          "opening": "17:00",
+          "closing": "21:00"
+        }
+      },
+      "tuesday": {
+        "morning": {
+          "opening": "9:00",
+          "closing": "14:00"
+        },
+        "late": {
+          "opening": "17:00",
+          "closing": "21:00"
+        }
+      },
+      "wednesday": {
+        "morning": {
+          "opening": "9:00",
+          "closing": "14:00"
+        },
+        "late": {
+          "opening": "17:00",
+          "closing": "21:00"
+        }
+      },
+      "thursday": {
+        "morning": {
+          "opening": "9:00",
+          "closing": "14:00"
+        },
+        "late": {
+          "opening": "17:00",
+          "closing": "21:00"
+        }
+      },
+      "friday": {
+        "morning": {
+          "opening": "9:00",
+          "closing": "14:00"
+        },
+        "late": {
+          "opening": "17:00",
+          "closing": "21:00"
+        }
+      },
+      "saturday": {
+        "morning": {
+          "opening": "9:00",
+          "closing": "14:00"
+        },
+        "late": {
+          "opening": "17:00",
+          "closing": "21:00"
+        }
+      },
+      "sunday": {
+        "morning": {
+          "opening": "9:00",
+          "closing": "14:00"
+        },
+        "late": {
+          "opening": "17:00",
+          "closing": "21:00"
+        }
+      }
+    }
   },
   {
     "id": 2,
     "name": "Miguel Cambronero",
     "address": "Calle Ortega y Gasset, 36, 30520 Jumilla, Murcia",
-    "phone": "968 78 28 01"
+    "phone": "968 78 28 01",
+    "hours": {
+      "monday": {
+        "morning": {
+          "opening": "9:00",
+          "closing": "14:00"
+        },
+        "late": {
+          "opening": "17:00",
+          "closing": "21:00"
+        }
+      },
+      "tuesday": {
+        "morning": {
+          "opening": "9:00",
+          "closing": "14:00"
+        },
+        "late": {
+          "opening": "17:00",
+          "closing": "21:00"
+        }
+      },
+      "wednesday": {
+        "morning": {
+          "opening": "9:00",
+          "closing": "14:00"
+        },
+        "late": {
+          "opening": "17:00",
+          "closing": "21:00"
+        }
+      },
+      "thursday": {
+        "morning": {
+          "opening": "9:00",
+          "closing": "14:00"
+        },
+        "late": {
+          "opening": "17:00",
+          "closing": "21:00"
+        }
+      },
+      "friday": {
+        "morning": {
+          "opening": "9:00",
+          "closing": "14:00"
+        },
+        "late": {
+          "opening": "17:00",
+          "closing": "21:00"
+        }
+      },
+      "saturday": {
+        "morning": {
+          "opening": "9:00",
+          "closing": "14:00"
+        },
+        "late": {
+          "opening": "17:00",
+          "closing": "21:00"
+        }
+      },
+      "sunday": {
+        "morning": {
+          "opening": "9:00",
+          "closing": "14:00"
+        },
+        "late": {
+          "opening": "17:00",
+          "closing": "21:00"
+        }
+      }
+    }
   },
   {
     "id": 3,
     "name": "Pedro Soriano",
     "address": "Av. de Levante, 30520 Jumilla, Murcia",
-    "phone": "968 78 00 05"
+    "phone": "968 78 00 05",
+    "hours": {
+      "monday": {
+        "morning": {
+          "opening": "9:00",
+          "closing": "14:00"
+        },
+        "late": {
+          "opening": "17:00",
+          "closing": "21:00"
+        }
+      },
+      "tuesday": {
+        "morning": {
+          "opening": "9:00",
+          "closing": "14:00"
+        },
+        "late": {
+          "opening": "17:00",
+          "closing": "21:00"
+        }
+      },
+      "wednesday": {
+        "morning": {
+          "opening": "9:00",
+          "closing": "14:00"
+        },
+        "late": {
+          "opening": "17:00",
+          "closing": "21:00"
+        }
+      },
+      "thursday": {
+        "morning": {
+          "opening": "9:00",
+          "closing": "14:00"
+        },
+        "late": {
+          "opening": "17:00",
+          "closing": "21:00"
+        }
+      },
+      "friday": {
+        "morning": {
+          "opening": "9:00",
+          "closing": "14:00"
+        },
+        "late": {
+          "opening": "17:00",
+          "closing": "21:00"
+        }
+      },
+      "saturday": {
+        "morning": {
+          "opening": "9:00",
+          "closing": "14:00"
+        },
+        "late": {
+          "opening": "17:00",
+          "closing": "21:00"
+        }
+      },
+      "sunday": {
+        "morning": {
+          "opening": "9:00",
+          "closing": "14:00"
+        },
+        "late": {
+          "opening": "17:00",
+          "closing": "21:00"
+        }
+      }
+    }
   },
   {
     "id": 4,
     "name": "Aurora Azorín",
     "address": "Calle Cánovas del Castillo, 50, 30520 Jumilla, Murcia",
-    "phone": "968 78 01 30"
+    "phone": "968 78 01 30",
+    "hours": {
+      "monday": {
+        "morning": {
+          "opening": "9:00",
+          "closing": "14:00"
+        },
+        "late": {
+          "opening": "17:00",
+          "closing": "21:00"
+        }
+      },
+      "tuesday": {
+        "morning": {
+          "opening": "9:00",
+          "closing": "14:00"
+        },
+        "late": {
+          "opening": "17:00",
+          "closing": "21:00"
+        }
+      },
+      "wednesday": {
+        "morning": {
+          "opening": "9:00",
+          "closing": "14:00"
+        },
+        "late": {
+          "opening": "17:00",
+          "closing": "21:00"
+        }
+      },
+      "thursday": {
+        "morning": {
+          "opening": "9:00",
+          "closing": "14:00"
+        },
+        "late": {
+          "opening": "17:00",
+          "closing": "21:00"
+        }
+      },
+      "friday": {
+        "morning": {
+          "opening": "9:00",
+          "closing": "14:00"
+        },
+        "late": {
+          "opening": "17:00",
+          "closing": "21:00"
+        }
+      },
+      "saturday": {
+        "morning": {
+          "opening": "9:00",
+          "closing": "14:00"
+        },
+        "late": {
+          "opening": "17:00",
+          "closing": "21:00"
+        }
+      },
+      "sunday": {
+        "morning": {
+          "opening": "9:00",
+          "closing": "14:00"
+        },
+        "late": {
+          "opening": "17:00",
+          "closing": "21:00"
+        }
+      }
+    }
   },
   {
     "id": 5,
     "name": "Diego Soriano",
     "address": "Calle Cánovas del Castillo, 109, 30520 Jumilla, Murcia",
-    "phone": "968 78 25 08"
+    "phone": "968 78 25 08",
+    "hours": {
+      "monday": {
+        "morning": {
+          "opening": "9:00",
+          "closing": "14:00"
+        },
+        "late": {
+          "opening": "17:00",
+          "closing": "21:00"
+        }
+      },
+      "tuesday": {
+        "morning": {
+          "opening": "9:00",
+          "closing": "14:00"
+        },
+        "late": {
+          "opening": "17:00",
+          "closing": "21:00"
+        }
+      },
+      "wednesday": {
+        "morning": {
+          "opening": "9:00",
+          "closing": "14:00"
+        },
+        "late": {
+          "opening": "17:00",
+          "closing": "21:00"
+        }
+      },
+      "thursday": {
+        "morning": {
+          "opening": "9:00",
+          "closing": "14:00"
+        },
+        "late": {
+          "opening": "17:00",
+          "closing": "21:00"
+        }
+      },
+      "friday": {
+        "morning": {
+          "opening": "9:00",
+          "closing": "14:00"
+        },
+        "late": {
+          "opening": "17:00",
+          "closing": "21:00"
+        }
+      },
+      "saturday": {
+        "morning": {
+          "opening": "9:00",
+          "closing": "14:00"
+        },
+        "late": {
+          "opening": "17:00",
+          "closing": "21:00"
+        }
+      },
+      "sunday": {
+        "morning": {
+          "opening": "9:00",
+          "closing": "14:00"
+        },
+        "late": {
+          "opening": "17:00",
+          "closing": "21:00"
+        }
+      }
+    }
   },
   {
     "id": 6,
     "name": "Manuel Mazuelas",
     "address": "Calle Barón del Solar, 30520 Jumilla, Murcia",
-    "phone": "968 78 23 15"
+    "phone": "968 78 23 15",
+    "hours": {
+      "monday": {
+        "morning": {
+          "opening": "9:00",
+          "closing": "14:00"
+        },
+        "late": {
+          "opening": "17:00",
+          "closing": "21:00"
+        }
+      },
+      "tuesday": {
+        "morning": {
+          "opening": "9:00",
+          "closing": "14:00"
+        },
+        "late": {
+          "opening": "17:00",
+          "closing": "21:00"
+        }
+      },
+      "wednesday": {
+        "morning": {
+          "opening": "9:00",
+          "closing": "14:00"
+        },
+        "late": {
+          "opening": "17:00",
+          "closing": "21:00"
+        }
+      },
+      "thursday": {
+        "morning": {
+          "opening": "9:00",
+          "closing": "14:00"
+        },
+        "late": {
+          "opening": "17:00",
+          "closing": "21:00"
+        }
+      },
+      "friday": {
+        "morning": {
+          "opening": "9:00",
+          "closing": "14:00"
+        },
+        "late": {
+          "opening": "17:00",
+          "closing": "21:00"
+        }
+      },
+      "saturday": {
+        "morning": {
+          "opening": "9:00",
+          "closing": "14:00"
+        },
+        "late": {
+          "opening": "17:00",
+          "closing": "21:00"
+        }
+      },
+      "sunday": {
+        "morning": {
+          "opening": "9:00",
+          "closing": "14:00"
+        },
+        "late": {
+          "opening": "17:00",
+          "closing": "21:00"
+        }
+      }
+    }
   },
   {
     "id": 7,
     "name": "Alberto Agulló",
     "address": "Calle Canalejas, 38, 30520 Jumilla, Murcia",
-    "phone": "968 78 00 88"
+    "phone": "968 78 00 88",
+    "hours": {
+      "monday": {
+        "morning": {
+          "opening": "9:00",
+          "closing": "14:00"
+        },
+        "late": {
+          "opening": "17:00",
+          "closing": "21:00"
+        }
+      },
+      "tuesday": {
+        "morning": {
+          "opening": "9:00",
+          "closing": "14:00"
+        },
+        "late": {
+          "opening": "17:00",
+          "closing": "21:00"
+        }
+      },
+      "wednesday": {
+        "morning": {
+          "opening": "9:00",
+          "closing": "14:00"
+        },
+        "late": {
+          "opening": "17:00",
+          "closing": "21:00"
+        }
+      },
+      "thursday": {
+        "morning": {
+          "opening": "9:00",
+          "closing": "14:00"
+        },
+        "late": {
+          "opening": "17:00",
+          "closing": "21:00"
+        }
+      },
+      "friday": {
+        "morning": {
+          "opening": "9:00",
+          "closing": "14:00"
+        },
+        "late": {
+          "opening": "17:00",
+          "closing": "21:00"
+        }
+      },
+      "saturday": {
+        "morning": {
+          "opening": "9:00",
+          "closing": "14:00"
+        },
+        "late": {
+          "opening": "17:00",
+          "closing": "21:00"
+        }
+      },
+      "sunday": {
+        "morning": {
+          "opening": "9:00",
+          "closing": "14:00"
+        },
+        "late": {
+          "opening": "17:00",
+          "closing": "21:00"
+        }
+      }
+    }
   }
 ]
