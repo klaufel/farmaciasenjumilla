@@ -5,7 +5,7 @@ import pharmaciesListJSON from '../../json/pharmaciesList.json';
 
 
 function getFarmacia(farmaciaId) {
-  const farmaciaIndex = helper.getIndex(farmaciaId, pharmaciesListJSON, 'id')
+  const farmaciaIndex = helper.getIndex(farmaciaId, pharmaciesListJSON, 'id');
   const farmaciaActual = pharmaciesListJSON[farmaciaIndex];
 
   const farmacia = {
@@ -23,7 +23,7 @@ class FarmaciasGuardiaListado extends Component {
     return (
       <div>
         <br/>
-        <h3>Listado de farmacias de guardia Jumilla:</h3>
+        <h3>Listado de farmacias de guardia en Jumilla:</h3>
         <table className="table table-striped table-bordered table-hover">
           <thead>
             <tr>

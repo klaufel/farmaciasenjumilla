@@ -46,10 +46,11 @@ class FarmaciaGuardia extends Component {
   render() {
     return (
       <div className="jumbotron">
-        <p>Farmacia de guardia (hoy {helper.getDateActual()})</p>
+        <h3>Farmacia de guardia:</h3>
+        <p>Hoy {helper.getDayWeekString()}, {helper.getDateActual()}</p>
         <h1>{this.state.name}</h1>
-        <p>{this.state.address}</p>
-        <p>{this.state.phone}</p>
+        <p><a href={"https://www.google.es/maps/search/" + this.state.address} target="_blank">{this.state.address}</a></p>
+        <p><a href={"tel:" + helper.removeWhiteSpaces(this.state.phone)}>{this.state.phone}</a></p>
       </div>
     )
   }
