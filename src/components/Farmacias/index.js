@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import Moment from 'react-moment';
 import * as helper from '../../helper.js';
 import pharmaciesListJSON from '../../json/pharmaciesList.json';
 
@@ -28,20 +27,19 @@ class Farmacias extends Component {
 
 function isOpen(open, close) {
   const date = new Date();
-  const dateActualHours = date.getHours() + ':' + date.getMinutes();
+  const dateActual = date.getHours() + '' + date.getMinutes();
 
-  var currentTime= new Moment();    // e.g. 11:00 pm
-  var startTime = new Moment(open, "HH:mm");
-  var endTime = new Moment(close, "HH:mm");
+  const dateOpenSplit = open.split(':');
+  const dateOpen = dateOpenSplit[0] + '' + dateOpenSplit[1];
 
+  const dateCloseSplit = close.split(':');
+  const dateClose = dateCloseSplit[0] + '' + dateCloseSplit[1];
 
-  var test = currentTime.isBetween(startTime, endTime);
-
-
-  if(test == true) {
+  if( (dateActual >= dateOpen) && (dateActual <= dateClose) ) {
     return true;
   }
 }
+
 
 class FarmaciasRow extends Component {
   constructor(props) {
@@ -51,31 +49,46 @@ class FarmaciasRow extends Component {
 
 
     this.item = this.props.farmaciasListado.map((item, idx) => {
+      const farmacia = {
+        'name': item.name,
+        'address': item.address,
+        'phone': item.phone,
+        'morningOpening': item.hours[dayWeekNumber].morning.opening,
+        'morningClosing': item.hours[dayWeekNumber].morning.closing,
+        'lateOpening': item.hours[dayWeekNumber].late.opening,
+        'lateClosing': item.hours[dayWeekNumber].late.closing
+      };
 
-      const date = new Date();
-      const dateActualHours = date.getHours() + ':' + date.getMinutes();
+      let farmaciaAbierta = {
+        'state': 'Abierta',
+        'color': 'green'
+      };
 
-
-      const opening = item.hours[dayWeekNumber].morning.opening;
-      const closing = item.hours[dayWeekNumber].morning.closing;
-
-      if(isOpen(opening, closing) ) {
-        console.log('abierta');
+      if(isOpen(farmacia.morningOpening, farmacia.morningClosing) ) {
+        farmaciaAbierta.state = 'Abierta';
+        farmaciaAbierta.color = 'green';
+      } else if(isOpen(farmacia.lateOpening, farmacia.lateClosing) ) {
+        farmaciaAbierta.state = 'Abierta';
+        farmaciaAbierta.color = 'green';
+      } else {
+        farmaciaAbierta.state = 'Cerrada';
+        farmaciaAbierta.color = 'red';
       }
 
-      console.log('----------');
       return(
         <tr key={idx}>
-          <td>Abierta</td>
-          <td>{item.name}</td>
           <td>
-            Hoy {dayWeekString}&nbsp;
-            {item.hours[dayWeekNumber].morning.opening} - {item.hours[dayWeekNumber].morning.closing}
-            &nbsp;/&nbsp;
-            {item.hours[dayWeekNumber].late.opening} - {item.hours[dayWeekNumber].late.closing}
+            <span style={{color: farmaciaAbierta.color}}>{farmaciaAbierta.state}</span>
           </td>
-          <td>{item.address}</td>
-          <td>{item.phone}</td>
+          <td>{farmacia.name}</td>
+          <td>
+            Hoy {dayWeekString}:&nbsp;
+            {farmacia.morningOpening} - {farmacia.morningClosing}
+            &nbsp;/&nbsp;
+            {farmacia.lateOpening} - {farmacia.lateClosing}
+          </td>
+          <td><a href={"https://www.google.es/maps/search/" + farmacia.address} target="_blank">{farmacia.address}</a></td>
+          <td><a href={"tel:" + helper.removeWhiteSpaces(farmacia.phone)}>{farmacia.phone}</a></td>
         </tr>
       )
     });
