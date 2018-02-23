@@ -5,7 +5,7 @@ class Header extends Component {
   render() {
     return(
 
-      <nav className="navbar navbar-default navbar-fixed-top">
+      <nav className="navbar navbar-default navbar-fixed-top has-nav">
         <div className="container">
           <div className="navbar-header">
 

@@ -26,7 +26,7 @@ export function getDateActual() {
 export function getDayWeekNumber(){
   const date = new Date();
   const days = [7, 1, 2, 3, 4, 5, 6];
-  return days[date.getUTCDay()];
+  return days[date.getDay()];
 };
 
 export function getDayWeekString(){
@@ -40,5 +40,5 @@ export function getDayWeekString(){
     "Viernes",
     "Sábado"
   ];
-  return days[date.getUTCDay()];
+  return days[date.getDay()];
 };
