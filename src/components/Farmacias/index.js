@@ -30,10 +30,15 @@ function isOpen(open, close) {
   const date = new Date();
   const dateActualHours = date.getHours() + ':' + date.getMinutes();
 
-  console.log(open);
-  console.log(close);
-  console.log(dateActualHours);
-  if( dateActualHours > open){
+  var currentTime= new Moment();    // e.g. 11:00 pm
+  var startTime = new Moment(open, "HH:mm");
+  var endTime = new Moment(close, "HH:mm");
+
+
+  var test = currentTime.isBetween(startTime, endTime);
+
+
+  if(test == true) {
     return true;
   }
 }
@@ -49,6 +54,7 @@ class FarmaciasRow extends Component {
 
       const date = new Date();
       const dateActualHours = date.getHours() + ':' + date.getMinutes();
+
 
       const opening = item.hours[dayWeekNumber].morning.opening;
       const closing = item.hours[dayWeekNumber].morning.closing;

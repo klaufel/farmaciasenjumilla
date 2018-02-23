@@ -4,8 +4,7 @@ import logo from '../../assets/images/logo.svg';
 class Header extends Component {
   render() {
     return(
-
-      <nav className="navbar navbar-default navbar-fixed-top has-nav">
+      <nav className="navbar navbar-default navbar-fixed-top">
         <div className="container">
           <div className="navbar-header">
 
