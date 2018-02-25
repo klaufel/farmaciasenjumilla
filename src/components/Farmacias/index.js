@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import * as helper from '../../helper.js';
+import pharmaciesDateJSON from '../../json/pharmaciesDate.json';
 import pharmaciesListJSON from '../../json/pharmaciesList.json';
 
 class Farmacias extends Component {
@@ -16,6 +17,7 @@ class Farmacias extends Component {
               <th>Horario</th>
               <th>Dirección</th>
               <th>Teléfono</th>
+              <th>Web</th>
             </tr>
           </thead>
           <FarmaciasRow farmaciasListado={pharmaciesListJSON} />
@@ -24,6 +26,20 @@ class Farmacias extends Component {
     )
   }
 }
+
+function isFarmaciaGuardia(idFarmacia) {
+  const dateActual = helper.getDateActual();
+  const dateIndex = helper.getIndex(dateActual, pharmaciesDateJSON, 'date');
+  const dateId = pharmaciesDateJSON[dateIndex].id;
+
+  const farmaciaIndex = helper.getIndex(dateId, pharmaciesListJSON, 'id')
+  const farmaciaActual = pharmaciesListJSON[farmaciaIndex];
+
+  if(idFarmacia === farmaciaActual.id) {
+    return <span>Farmacia de Guardia</span>;
+  }
+}
+
 
 function isOpen(open, close) {
   const date = new Date();
@@ -41,18 +57,25 @@ function isOpen(open, close) {
 }
 
 
+function farmaciaWeb(web) {
+  if(web) {
+    return <a href={web} target="_blank">Ver web</a>;
+  }
+}
+
 class FarmaciasRow extends Component {
   constructor(props) {
     super(props);
     const dayWeekString = helper.getDayWeekString();
     const dayWeekNumber = helper.getDayWeekNumber();
 
-
     this.item = this.props.farmaciasListado.map((item, idx) => {
       const farmacia = {
+        'id': item.id,
         'name': item.name,
         'address': item.address,
         'phone': item.phone,
+        'web': item.web,
         'morningOpening': item.hours[dayWeekNumber].morning.opening,
         'morningClosing': item.hours[dayWeekNumber].morning.closing,
         'lateOpening': item.hours[dayWeekNumber].late.opening,
@@ -64,7 +87,11 @@ class FarmaciasRow extends Component {
         'color': 'green'
       };
 
-      if(isOpen(farmacia.morningOpening, farmacia.morningClosing) ) {
+
+      if(isFarmaciaGuardia(farmacia.id)) {
+        farmaciaAbierta.state = 'Abierta (Guardia)';
+        farmaciaAbierta.color = 'green';
+      } else if(isOpen(farmacia.morningOpening, farmacia.morningClosing) ) {
         farmaciaAbierta.state = 'Abierta';
         farmaciaAbierta.color = 'green';
       } else if(isOpen(farmacia.lateOpening, farmacia.lateClosing) ) {
@@ -89,9 +116,11 @@ class FarmaciasRow extends Component {
           </td>
           <td><a href={"https://www.google.es/maps/search/" + farmacia.address} target="_blank">{farmacia.address}</a></td>
           <td><a href={"tel:" + helper.removeWhiteSpaces(farmacia.phone)}>{farmacia.phone}</a></td>
+          <td>{farmaciaWeb(farmacia.web)}</td>
         </tr>
       )
     });
+
   }
 
   render() {

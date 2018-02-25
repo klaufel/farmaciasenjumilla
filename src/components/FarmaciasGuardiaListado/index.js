@@ -3,6 +3,11 @@ import * as helper from '../../helper.js';
 import pharmaciesDateJSON from '../../json/pharmaciesDate.json';
 import pharmaciesListJSON from '../../json/pharmaciesList.json';
 
+function getDateIndex(slice = 0) {
+  const dateActual = helper.getDateActual();
+  const dateIndex = helper.getIndex(dateActual, pharmaciesDateJSON, 'date');
+  return dateIndex + slice;
+}
 
 function getFarmacia(farmaciaId) {
   const farmaciaIndex = helper.getIndex(farmaciaId, pharmaciesListJSON, 'id');
@@ -44,7 +49,10 @@ class FarmaciasGuardiaListado extends Component {
 class FarmaciasGuardiaListadoRow extends Component {
   constructor(props) {
     super(props);
-    this.item = this.props.farmaciasListado.map((item, idx) => {
+    const dateIndex = getDateIndex(-1);
+    const dateLimit = dateIndex + 5;
+
+    this.item = this.props.farmaciasListado.slice(dateIndex, dateLimit).map((item, idx) => {
       return(
         <FarmaciasGuardiaListadoCol
           farmaciaDate={item.date}
@@ -90,7 +98,7 @@ class FarmaciasGuardiaListadoCol extends Component {
     const dateActual = helper.getDateActual();
     return(
       <tr className={(this.state.date === dateActual ? 'is-actual' : '')}>
-        <td>{this.state.date}</td>
+        <td>{(this.state.date === dateActual ? 'Hoy ' : '')} {this.state.date}</td>
         <td>{this.state.name}</td>
         <td><a href={"https://www.google.es/maps/search/" + this.state.address} target="_blank">{this.state.address}</a></td>
         <td><a href={"tel:" + helper.removeWhiteSpaces(this.state.phone)}>{this.state.phone}</a></td>

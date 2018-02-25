@@ -4,6 +4,7 @@
     "name": "Manuel Guillén",
     "address": "Calle Cánovas del Castillo, 22, 30520 Jumilla, Murcia",
     "phone": "968 78 01 65",
+    "web": "https://www.farmaciaguillen.com/",
     "hours": {
       "1": {
         "morning": {
@@ -61,18 +62,18 @@
           "closing": "14:00"
         },
         "late": {
-          "opening": "17:00",
-          "closing": "21:00"
+          "opening": "",
+          "closing": ""
         }
       },
       "7": {
         "morning": {
-          "opening": "9:00",
-          "closing": "14:00"
+          "opening": "",
+          "closing": ""
         },
         "late": {
-          "opening": "17:00",
-          "closing": "21:00"
+          "opening": "",
+          "closing": ""
         }
       }
     }
@@ -82,6 +83,7 @@
     "name": "Miguel Cambronero",
     "address": "Calle Ortega y Gasset, 36, 30520 Jumilla, Murcia",
     "phone": "968 78 28 01",
+    "web": "",
     "hours": {
       "1": {
         "morning": {
@@ -139,18 +141,18 @@
           "closing": "14:00"
         },
         "late": {
-          "opening": "17:00",
-          "closing": "21:00"
+          "opening": "",
+          "closing": ""
         }
       },
       "7": {
         "morning": {
-          "opening": "9:00",
-          "closing": "14:00"
+          "opening": "",
+          "closing": ""
         },
         "late": {
-          "opening": "17:00",
-          "closing": "21:00"
+          "opening": "",
+          "closing": ""
         }
       }
     }
@@ -160,6 +162,7 @@
     "name": "Pedro Soriano",
     "address": "Av. de Levante, 30520 Jumilla, Murcia",
     "phone": "968 78 00 05",
+    "web": "",
     "hours": {
       "1": {
         "morning": {
@@ -217,18 +220,18 @@
           "closing": "14:00"
         },
         "late": {
-          "opening": "17:00",
-          "closing": "21:00"
+          "opening": "",
+          "closing": ""
         }
       },
       "7": {
         "morning": {
-          "opening": "9:00",
-          "closing": "14:00"
+          "opening": "",
+          "closing": ""
         },
         "late": {
-          "opening": "17:00",
-          "closing": "21:00"
+          "opening": "",
+          "closing": ""
         }
       }
     }
@@ -238,6 +241,7 @@
     "name": "Aurora Azorín",
     "address": "Calle Cánovas del Castillo, 50, 30520 Jumilla, Murcia",
     "phone": "968 78 01 30",
+    "web": "",
     "hours": {
       "1": {
         "morning": {
@@ -295,18 +299,18 @@
           "closing": "14:00"
         },
         "late": {
-          "opening": "17:00",
-          "closing": "21:00"
+          "opening": "",
+          "closing": ""
         }
       },
       "7": {
         "morning": {
-          "opening": "9:00",
-          "closing": "14:00"
+          "opening": "",
+          "closing": ""
         },
         "late": {
-          "opening": "17:00",
-          "closing": "21:00"
+          "opening": "",
+          "closing": ""
         }
       }
     }
@@ -316,6 +320,7 @@
     "name": "Diego Soriano",
     "address": "Calle Cánovas del Castillo, 109, 30520 Jumilla, Murcia",
     "phone": "968 78 25 08",
+    "web": "",
     "hours": {
       "1": {
         "morning": {
@@ -373,18 +378,18 @@
           "closing": "14:00"
         },
         "late": {
-          "opening": "17:00",
-          "closing": "21:00"
+          "opening": "",
+          "closing": ""
         }
       },
       "7": {
         "morning": {
-          "opening": "9:00",
-          "closing": "14:00"
+          "opening": "",
+          "closing": ""
         },
         "late": {
-          "opening": "17:00",
-          "closing": "21:00"
+          "opening": "",
+          "closing": ""
         }
       }
     }
@@ -394,6 +399,7 @@
     "name": "Manuel Mazuelas",
     "address": "Calle Barón del Solar, 30520 Jumilla, Murcia",
     "phone": "968 78 23 15",
+    "web": "",
     "hours": {
       "1": {
         "morning": {
@@ -451,18 +457,18 @@
           "closing": "14:00"
         },
         "late": {
-          "opening": "17:00",
-          "closing": "21:00"
+          "opening": "",
+          "closing": ""
         }
       },
       "7": {
         "morning": {
-          "opening": "9:00",
-          "closing": "14:00"
+          "opening": "",
+          "closing": ""
         },
         "late": {
-          "opening": "17:00",
-          "closing": "21:00"
+          "opening": "",
+          "closing": ""
         }
       }
     }
@@ -472,6 +478,7 @@
     "name": "Alberto Agulló",
     "address": "Calle Canalejas, 38, 30520 Jumilla, Murcia",
     "phone": "968 78 00 88",
+    "web": "",
     "hours": {
       "1": {
         "morning": {
@@ -529,18 +536,18 @@
           "closing": "14:00"
         },
         "late": {
-          "opening": "17:00",
-          "closing": "21:00"
+          "opening": "",
+          "closing": ""
         }
       },
       "7": {
         "morning": {
-          "opening": "9:00",
-          "closing": "14:00"
+          "opening": "",
+          "closing": ""
         },
         "late": {
-          "opening": "17:00",
-          "closing": "21:00"
+          "opening": "",
+          "closing": ""
         }
       }
     }

@@ -5782,6 +5782,7 @@ body {
 
 .is-actual {
   background-color: #d0e1d3 !important;
+  font-weight: 700;
 }
 
 .footer {
