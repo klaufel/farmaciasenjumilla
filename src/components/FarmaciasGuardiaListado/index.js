@@ -27,9 +27,8 @@ class FarmaciasGuardiaListado extends Component {
   render() {
     return (
       <div>
-        <br/>
-        <h3>Listado de farmacias de guardia en Jumilla:</h3>
-        <table className="table table-striped table-bordered table-hover">
+        <h3 className="title">Farmacias de guardia de los próximos días:</h3>
+        <table className="table table-striped table-hover">
           <thead>
             <tr>
               <th>Fecha</th>

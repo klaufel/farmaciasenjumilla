@@ -11,10 +11,20 @@ class App extends Component {
     return (
       <div className="App">
         <Header />
-        <div className="container">
-          <FarmaciaGuardia />
-          <FarmaciasGuardiaListado />
-          <Farmacias />
+        <div className="farmacia-guardia-content">
+          <div className="container">
+            <FarmaciaGuardia />
+          </div>
+        </div>
+        <div className="farmacias-guardia-listado-content">
+          <div className="container">
+            <FarmaciasGuardiaListado />
+          </div>
+        </div>
+        <div className="farmacias-content">
+          <div className="container">
+            <Farmacias />
+          </div>
         </div>
         <Footer />
       </div>

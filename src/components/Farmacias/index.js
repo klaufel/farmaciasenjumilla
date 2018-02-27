@@ -7,8 +7,7 @@ class Farmacias extends Component {
   render() {
     return (
       <div>
-        <br/>
-        <h3>Listado de farmacias de Jumilla:</h3>
+        <h3 className="title">Listado de farmacias de Jumilla:</h3>
         <FarmaciasRow farmaciasListado={pharmaciesListJSON} />
       </div>
     )
@@ -48,7 +47,9 @@ function converDateToNumber(date) {
 
 function farmaciaWeb(web) {
   if(web) {
-    return <a href={web} target="_blank">Ver web</a>;
+    return (
+      <span>&nbsp;-&nbsp;&nbsp;<a href={web} target="_blank">Ver web</a></span>
+    );
   }
 }
 
@@ -77,7 +78,7 @@ class FarmaciasRow extends Component {
       };
 
       if(isFarmaciaGuardia(farmacia.id)) {
-        farmaciaAbierta.state = 'Abierta (Guardia)';
+        farmaciaAbierta.state = 'Abierta (Farmacia de Guardia)';
         farmaciaAbierta.color = 'green';
       } else if(isOpen(converDateToNumber(farmacia.morningOpening), converDateToNumber(farmacia.morningClosing)) ) {
         farmaciaAbierta.state = 'Abierta';
@@ -93,12 +94,10 @@ class FarmaciasRow extends Component {
       return(
         <div className="farmacia__item" key={idx}>
           <div className="farmacia__content">
-            <h4>{farmacia.name}</h4>
+            <h4 className="farmacia__title">{farmacia.name}</h4>
             <p><a href={"https://www.google.es/maps/search/" + farmacia.address} target="_blank">{farmacia.address}</a></p>
-            <p><a href={"tel:" + helper.removeWhiteSpaces(farmacia.phone)}>{farmacia.phone}</a></p>
-            <p>{farmaciaWeb(farmacia.web)}&nbsp;</p>
-            <p>Horario:
-              Hoy {dayWeekString}:&nbsp;
+            <p><a href={"tel:" + helper.removeWhiteSpaces(farmacia.phone)}>{farmacia.phone}</a> {farmaciaWeb(farmacia.web)}</p>
+            <p>Horario, hoy {dayWeekString}:&nbsp;
               {farmacia.morningOpening} a {farmacia.morningClosing}
               &nbsp;y&nbsp;
               {farmacia.lateOpening} a {farmacia.lateClosing}
