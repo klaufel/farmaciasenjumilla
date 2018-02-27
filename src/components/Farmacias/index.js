@@ -9,19 +9,7 @@ class Farmacias extends Component {
       <div>
         <br/>
         <h3>Listado de farmacias de Jumilla:</h3>
-        <table className="table table-striped table-bordered table-hover">
-          <thead>
-            <tr>
-              <th>Estado</th>
-              <th>Farmacia</th>
-              <th>Horario</th>
-              <th>Dirección</th>
-              <th>Teléfono</th>
-              <th>Web</th>
-            </tr>
-          </thead>
-          <FarmaciasRow farmaciasListado={pharmaciesListJSON} />
-        </table>
+        <FarmaciasRow farmaciasListado={pharmaciesListJSON} />
       </div>
     )
   }
@@ -43,18 +31,19 @@ function isFarmaciaGuardia(idFarmacia) {
 
 function isOpen(open, close) {
   const date = new Date();
-  const dateActual = date.getHours() + '' + date.getMinutes();
+  const dateActual = parseInt(date.getHours() + '' + date.getMinutes(), 10);
 
-  const dateOpenSplit = open.split(':');
-  const dateOpen = dateOpenSplit[0] + '' + dateOpenSplit[1];
-
-  const dateCloseSplit = close.split(':');
-  const dateClose = dateCloseSplit[0] + '' + dateCloseSplit[1];
-
-  if( (dateActual >= dateOpen) && (dateActual <= dateClose) ) {
+  if(dateActual >= open && dateActual <= close) {
     return true;
   }
 }
+
+function converDateToNumber(date) {
+  const dateSplit = date.split(':');
+  const dateNumber = dateSplit[0] + '' + dateSplit[1];
+  return parseInt(dateNumber, 10);
+}
+
 
 
 function farmaciaWeb(web) {
@@ -82,19 +71,18 @@ class FarmaciasRow extends Component {
         'lateClosing': item.hours[dayWeekNumber].late.closing
       };
 
-      let farmaciaAbierta = {
+      var farmaciaAbierta = {
         'state': 'Abierta',
         'color': 'green'
       };
 
-
       if(isFarmaciaGuardia(farmacia.id)) {
         farmaciaAbierta.state = 'Abierta (Guardia)';
         farmaciaAbierta.color = 'green';
-      } else if(isOpen(farmacia.morningOpening, farmacia.morningClosing) ) {
+      } else if(isOpen(converDateToNumber(farmacia.morningOpening), converDateToNumber(farmacia.morningClosing)) ) {
         farmaciaAbierta.state = 'Abierta';
         farmaciaAbierta.color = 'green';
-      } else if(isOpen(farmacia.lateOpening, farmacia.lateClosing) ) {
+      } else if(isOpen(converDateToNumber(farmacia.lateOpening), converDateToNumber(farmacia.lateClosing)) ) {
         farmaciaAbierta.state = 'Abierta';
         farmaciaAbierta.color = 'green';
       } else {
@@ -103,28 +91,28 @@ class FarmaciasRow extends Component {
       }
 
       return(
-        <tr key={idx}>
-          <td>
-            <span style={{color: farmaciaAbierta.color}}>{farmaciaAbierta.state}</span>
-          </td>
-          <td>{farmacia.name}</td>
-          <td>
-            Hoy {dayWeekString}:&nbsp;
-            {farmacia.morningOpening} - {farmacia.morningClosing}
-            &nbsp;/&nbsp;
-            {farmacia.lateOpening} - {farmacia.lateClosing}
-          </td>
-          <td><a href={"https://www.google.es/maps/search/" + farmacia.address} target="_blank">{farmacia.address}</a></td>
-          <td><a href={"tel:" + helper.removeWhiteSpaces(farmacia.phone)}>{farmacia.phone}</a></td>
-          <td>{farmaciaWeb(farmacia.web)}</td>
-        </tr>
+        <div className="farmacia__item" key={idx}>
+          <div className="farmacia__content">
+            <h4>{farmacia.name}</h4>
+            <p><a href={"https://www.google.es/maps/search/" + farmacia.address} target="_blank">{farmacia.address}</a></p>
+            <p><a href={"tel:" + helper.removeWhiteSpaces(farmacia.phone)}>{farmacia.phone}</a></p>
+            <p>{farmaciaWeb(farmacia.web)}&nbsp;</p>
+            <p>Horario:
+              Hoy {dayWeekString}:&nbsp;
+              {farmacia.morningOpening} a {farmacia.morningClosing}
+              &nbsp;y&nbsp;
+              {farmacia.lateOpening} a {farmacia.lateClosing}
+            </p>
+            <p style={{fontWeight: 'bold', color: farmaciaAbierta.color}}>{farmaciaAbierta.state}</p>
+          </div>
+        </div>
       )
     });
 
   }
 
   render() {
-    return( <tbody>{this.item}</tbody> );
+    return( <div className="farmacia">{this.item}</div> );
   }
 }
 
