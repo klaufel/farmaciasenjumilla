@@ -60,75 +60,6 @@ class FarmaciasRow extends Component {
     const dayWeekNumber = helper.getDayWeekNumber();
 
     this.item = this.props.farmaciasListado.map((item, idx) => {
-      return(
-        <FarmaciasCol
-          farmaciaId={item.id}
-          farmaciaName={item.name}
-          farmaciaAddress={item.address}
-          farmaciaPhone={item.phone}
-          farmaciaWeb={item.web}
-          farmaciaMorningOpening={item.hours[dayWeekNumber].morning.opening}
-          farmaciaMorningClosing={item.hours[dayWeekNumber].morning.closing}
-          farmaciaLateOpening={item.hours[dayWeekNumber].late.opening}
-          farmaciaLateClosing={item.hours[dayWeekNumber].late.closing}
-          key={idx}
-        />
-      )
-    });
-  }
-
-  render() {
-    return( <div>{this.item}</div> );
-  }
-}
-
-
-class FarmaciasCol extends Component {
-  constructor(props) {
-    super(props);
-    const farmaciaActual = getFarmacia(this.props.farmaciaId);
-    this.state = {
-      date: this.props.farmaciaDate,
-      id: this.props.farmaciaId,
-      name: farmaciaActual.name,
-      address: farmaciaActual.address,
-      phone: farmaciaActual.phone
-    }
-  }
-
-  componentDidMount() {
-    setInterval( () => {
-      const farmaciaActual = getFarmacia(this.props.farmaciaId);
-      this.setState({
-        date: this.props.farmaciaDate,
-        id: this.props.farmaciaId,
-        name: farmaciaActual.name,
-        address: farmaciaActual.address,
-        phone: farmaciaActual.phone
-      })
-    }, 10000)
-  }
-  render() {
-    const dateActual = helper.getDateActual();
-    return(
-      <tr className={(this.state.date === dateActual ? 'is-actual' : '')}>
-        <td>{(this.state.date === dateActual ? 'Hoy ' : '')} {this.state.date}</td>
-        <td>{this.state.name}</td>
-        <td><a href={"https://www.google.es/maps/search/" + this.state.address} target="_blank">{this.state.address}</a></td>
-        <td><a href={"tel:" + helper.removeWhiteSpaces(this.state.phone)}>{this.state.phone}</a></td>
-      </tr>
-    );
-  }
-}
-
-/*
-class FarmaciasRow extends Component {
-  constructor(props) {
-    super(props);
-    const dayWeekString = helper.getDayWeekString();
-    const dayWeekNumber = helper.getDayWeekNumber();
-
-    this.item = this.props.farmaciasListado.map((item, idx) => {
       const farmacia = {
         'id': item.id,
         'name': item.name,
@@ -183,7 +114,7 @@ class FarmaciasRow extends Component {
     return( <div className="farmacia">{this.item}</div> );
   }
 }
-*/
+
 
 
 export default Farmacias;
