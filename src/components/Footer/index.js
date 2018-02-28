@@ -7,7 +7,7 @@ class Footer extends Component {
         <div className="container">
           <div className="row">
             <div className="col-sm-6 col-md-6 col-lg-6">
-              <p className="copyright">Farmacias en Jumilla.</p>
+              <p className="copyright">Farmacias en Jumilla. {this.props.version}</p>
             </div>
             <div className="col-sm-6 col-md-6 col-lg-6 col-dev">
               <a href="http://juancaruiz.com" target="_blank" rel="noopener noreferrer">

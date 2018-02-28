@@ -5,6 +5,8 @@ import FarmaciaGuardia from './components/FarmaciaGuardia';
 import FarmaciasGuardiaListado from './components/FarmaciasGuardiaListado';
 import Farmacias from './components/Farmacias';
 
+const version = "v0.0.1a";
+
 class App extends Component {
 
   render() {
@@ -26,7 +28,7 @@ class App extends Component {
             <Farmacias />
           </div>
         </div>
-        <Footer />
+        <Footer version={version} />
       </div>
     )
   }

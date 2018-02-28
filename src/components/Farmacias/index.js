@@ -30,14 +30,20 @@ function isFarmaciaGuardia(idFarmacia) {
 
 function isOpen(open, close) {
   const date = new Date();
-  const dateActual = parseInt(date.getHours() + '' + date.getMinutes(), 10);
 
-  if(dateActual >= open && dateActual <= close) {
+  var dateHours = date.getHours();
+  var dateMinutes = date.getMinutes();
+  if (date.getMinutes() < 10) {
+    dateMinutes = '0' + date.getMinutes();
+  }
+
+  const dateActual = parseInt(dateHours + '' + dateMinutes, 10);
+  if(dateActual >= open && dateActual < close) {
     return true;
   }
 }
 
-function converDateToNumber(date) {
+function convertDateToNumber(date) {
   const dateSplit = date.split(':');
   const dateNumber = dateSplit[0] + '' + dateSplit[1];
   return parseInt(dateNumber, 10);
@@ -56,9 +62,6 @@ function farmaciaWeb(web) {
 class FarmaciasRow extends Component {
   constructor(props) {
     super(props);
-    const dayWeekString = helper.getDayWeekString();
-    const dayWeekNumber = helper.getDayWeekNumber();
-
     this.item = this.props.farmaciasListado.map((item, idx) => {
       return(
         <FarmaciasCol
@@ -67,10 +70,7 @@ class FarmaciasRow extends Component {
           farmaciaAddress={item.address}
           farmaciaPhone={item.phone}
           farmaciaWeb={item.web}
-          farmaciaMorningOpening={item.hours[dayWeekNumber].morning.opening}
-          farmaciaMorningClosing={item.hours[dayWeekNumber].morning.closing}
-          farmaciaLateOpening={item.hours[dayWeekNumber].late.opening}
-          farmaciaLateClosing={item.hours[dayWeekNumber].late.closing}
+          farmaciaHours={item.hours}
           key={idx}
         />
       )
@@ -78,112 +78,104 @@ class FarmaciasRow extends Component {
   }
 
   render() {
-    return( <div>{this.item}</div> );
+    return( <div className="farmacia">{this.item}</div> );
   }
+}
+
+
+
+function getFarmaciaAbiertaStatus(id, morningOpening, morningClosing, lateOpening, lateClosing) {
+  var farmaciaAbierta = {
+    'state': 'Abierta',
+    'color': 'green'
+  };
+
+  if(isFarmaciaGuardia(id)) {
+    farmaciaAbierta.state = 'Abierta (Farmacia de Guardia)';
+    farmaciaAbierta.color = 'green';
+  } else if(isOpen(convertDateToNumber(morningOpening), convertDateToNumber(morningClosing)) ) {
+    farmaciaAbierta.state = 'Abierta';
+    farmaciaAbierta.color = 'green';
+  } else if(isOpen(convertDateToNumber(lateOpening), convertDateToNumber(lateClosing)) ) {
+    farmaciaAbierta.state = 'Abierta';
+    farmaciaAbierta.color = 'green';
+  } else {
+    farmaciaAbierta.state = 'Cerrada';
+    farmaciaAbierta.color = 'red';
+  }
+  return farmaciaAbierta;
 }
 
 
 class FarmaciasCol extends Component {
   constructor(props) {
     super(props);
-    const farmaciaActual = getFarmacia(this.props.farmaciaId);
+    const dayWeekNumber = helper.getDayWeekNumber();
     this.state = {
-      date: this.props.farmaciaDate,
       id: this.props.farmaciaId,
-      name: farmaciaActual.name,
-      address: farmaciaActual.address,
-      phone: farmaciaActual.phone
+      dayWeekNumber:  helper.getDayWeekString(),
+      name: this.props.farmaciaName,
+      address: this.props.farmaciaAddress,
+      phone: this.props.farmaciaPhone,
+      web: this.props.farmaciaWeb,
+      morningOpening: this.props.farmaciaHours[dayWeekNumber].morning.opening,
+      morningClosing: this.props.farmaciaHours[dayWeekNumber].morning.closing,
+      lateOpening: this.props.farmaciaHours[dayWeekNumber].late.opening,
+      lateClosing: this.props.farmaciaHours[dayWeekNumber].late.closing,
+      farmaciaAbierta: getFarmaciaAbiertaStatus(
+        this.props.farmaciaId,
+        this.props.farmaciaHours[dayWeekNumber].morning.opening,
+        this.props.farmaciaHours[dayWeekNumber].morning.closing,
+        this.props.farmaciaHours[dayWeekNumber].late.opening,
+        this.props.farmaciaHours[dayWeekNumber].late.closing
+      )
     }
   }
 
+
   componentDidMount() {
     setInterval( () => {
-      const farmaciaActual = getFarmacia(this.props.farmaciaId);
+      const dayWeekNumber = helper.getDayWeekNumber();
       this.setState({
-        date: this.props.farmaciaDate,
         id: this.props.farmaciaId,
-        name: farmaciaActual.name,
-        address: farmaciaActual.address,
-        phone: farmaciaActual.phone
+        dayWeekNumber:  helper.getDayWeekString(),
+        name: this.props.farmaciaName,
+        address: this.props.farmaciaAddress,
+        phone: this.props.farmaciaPhone,
+        web: this.props.farmaciaWeb,
+        morningOpening: this.props.farmaciaHours[dayWeekNumber].morning.opening,
+        morningClosing: this.props.farmaciaHours[dayWeekNumber].morning.closing,
+        lateOpening: this.props.farmaciaHours[dayWeekNumber].late.opening,
+        lateClosing: this.props.farmaciaHours[dayWeekNumber].late.closing,
+        farmaciaAbierta: getFarmaciaAbiertaStatus(
+          this.props.farmaciaId,
+          this.props.farmaciaHours[dayWeekNumber].morning.opening,
+          this.props.farmaciaHours[dayWeekNumber].morning.closing,
+          this.props.farmaciaHours[dayWeekNumber].late.opening,
+          this.props.farmaciaHours[dayWeekNumber].late.closing
+        )
       })
-    }, 10000)
+
+    }, 1000);
   }
+
   render() {
-    const dateActual = helper.getDateActual();
     return(
-      <tr className={(this.state.date === dateActual ? 'is-actual' : '')}>
-        <td>{(this.state.date === dateActual ? 'Hoy ' : '')} {this.state.date}</td>
-        <td>{this.state.name}</td>
-        <td><a href={"https://www.google.es/maps/search/" + this.state.address} target="_blank">{this.state.address}</a></td>
-        <td><a href={"tel:" + helper.removeWhiteSpaces(this.state.phone)}>{this.state.phone}</a></td>
-      </tr>
+      <div className="farmacia__item">
+        <div className="farmacia__content">
+          <h4 className="farmacia__title">{this.state.name}</h4>
+          <p><a href={"https://www.google.es/maps/search/" + this.state.address} target="_blank">{this.state.address}</a></p>
+          <p><a href={"tel:" + helper.removeWhiteSpaces(this.state.phone)}>{this.state.phone}</a> {farmaciaWeb(this.state.web)}</p>
+          <p>Horario, hoy {this.state.dayWeekNumber}:&nbsp;
+            {this.state.morningOpening} a {this.state.morningClosing}
+            &nbsp;y&nbsp;
+            {this.state.lateOpening} a {this.state.lateClosing}
+          </p>
+          <p style={{fontWeight: 'bold', color: this.state.farmaciaAbierta.color}}>{this.state.farmaciaAbierta.state}</p>
+        </div>
+      </div>
     );
   }
 }
-
-/*
-class FarmaciasRow extends Component {
-  constructor(props) {
-    super(props);
-    const dayWeekString = helper.getDayWeekString();
-    const dayWeekNumber = helper.getDayWeekNumber();
-
-    this.item = this.props.farmaciasListado.map((item, idx) => {
-      const farmacia = {
-        'id': item.id,
-        'name': item.name,
-        'address': item.address,
-        'phone': item.phone,
-        'web': item.web,
-        'morningOpening': item.hours[dayWeekNumber].morning.opening,
-        'morningClosing': item.hours[dayWeekNumber].morning.closing,
-        'lateOpening': item.hours[dayWeekNumber].late.opening,
-        'lateClosing': item.hours[dayWeekNumber].late.closing
-      };
-
-      var farmaciaAbierta = {
-        'state': 'Abierta',
-        'color': 'green'
-      };
-
-      if(isFarmaciaGuardia(farmacia.id)) {
-        farmaciaAbierta.state = 'Abierta (Farmacia de Guardia)';
-        farmaciaAbierta.color = 'green';
-      } else if(isOpen(converDateToNumber(farmacia.morningOpening), converDateToNumber(farmacia.morningClosing)) ) {
-        farmaciaAbierta.state = 'Abierta';
-        farmaciaAbierta.color = 'green';
-      } else if(isOpen(converDateToNumber(farmacia.lateOpening), converDateToNumber(farmacia.lateClosing)) ) {
-        farmaciaAbierta.state = 'Abierta';
-        farmaciaAbierta.color = 'green';
-      } else {
-        farmaciaAbierta.state = 'Cerrada';
-        farmaciaAbierta.color = 'red';
-      }
-
-      return(
-        <div className="farmacia__item" key={idx}>
-          <div className="farmacia__content">
-            <h4 className="farmacia__title">{farmacia.name}</h4>
-            <p><a href={"https://www.google.es/maps/search/" + farmacia.address} target="_blank">{farmacia.address}</a></p>
-            <p><a href={"tel:" + helper.removeWhiteSpaces(farmacia.phone)}>{farmacia.phone}</a> {farmaciaWeb(farmacia.web)}</p>
-            <p>Horario, hoy {dayWeekString}:&nbsp;
-              {farmacia.morningOpening} a {farmacia.morningClosing}
-              &nbsp;y&nbsp;
-              {farmacia.lateOpening} a {farmacia.lateClosing}
-            </p>
-            <p style={{fontWeight: 'bold', color: farmaciaAbierta.color}}>{farmaciaAbierta.state}</p>
-          </div>
-        </div>
-      )
-    });
-
-  }
-
-  render() {
-    return( <div className="farmacia">{this.item}</div> );
-  }
-}
-*/
-
 
 export default Farmacias;

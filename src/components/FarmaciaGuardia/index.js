@@ -53,7 +53,7 @@ class FarmaciaGuardia extends Component {
         address: farmaciaActual.address,
         phone: farmaciaActual.phone
       })
-    }, 10000)
+    }, 1000)
   }
 
   render() {

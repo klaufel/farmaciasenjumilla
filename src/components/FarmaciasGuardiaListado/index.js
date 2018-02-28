@@ -56,6 +56,7 @@ class FarmaciasGuardiaListadoRow extends Component {
         <FarmaciasGuardiaListadoCol
           farmaciaDate={item.date}
           farmaciaId={item.id}
+          farmaciaKey={idx}
           key={idx}
         />
       )
@@ -73,6 +74,7 @@ class FarmaciasGuardiaListadoCol extends Component {
     super(props);
     const farmaciaActual = getFarmacia(this.props.farmaciaId);
     this.state = {
+      key: this.props.farmaciaKey,
       date: this.props.farmaciaDate,
       id: this.props.farmaciaId,
       name: farmaciaActual.name,
@@ -85,19 +87,28 @@ class FarmaciasGuardiaListadoCol extends Component {
     setInterval( () => {
       const farmaciaActual = getFarmacia(this.props.farmaciaId);
       this.setState({
+        key: this.props.farmaciaKey,
         date: this.props.farmaciaDate,
         id: this.props.farmaciaId,
         name: farmaciaActual.name,
         address: farmaciaActual.address,
         phone: farmaciaActual.phone
       })
-    }, 10000)
+    }, 1000)
   }
   render() {
-    const dateActual = helper.getDateActual();
+    console.log(this.state.key);
+    var nameDay = '';
+    if(this.state.key === 0) {
+      nameDay = 'Ayer ';
+    } else if(this.state.key === 1) {
+      nameDay = 'Hoy ';
+    } else if(this.state.key === 2) {
+      nameDay = 'Mañana ';
+    }
     return(
-      <tr className={(this.state.date === dateActual ? 'is-actual' : '')}>
-        <td>{(this.state.date === dateActual ? 'Hoy ' : '')} {this.state.date}</td>
+      <tr className={(this.state.key === 1 ? 'is-actual' : '')}>
+        <td>{nameDay}{this.state.date}</td>
         <td>{this.state.name}</td>
         <td><a href={"https://www.google.es/maps/search/" + this.state.address} target="_blank">{this.state.address}</a></td>
         <td><a href={"tel:" + helper.removeWhiteSpaces(this.state.phone)}>{this.state.phone}</a></td>
