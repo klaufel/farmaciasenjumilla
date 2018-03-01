@@ -97,7 +97,6 @@ class FarmaciasGuardiaListadoCol extends Component {
     }, 1000)
   }
   render() {
-    console.log(this.state.key);
     var nameDay = '';
     if(this.state.key === 0) {
       nameDay = 'Ayer ';

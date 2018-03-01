@@ -26,10 +26,9 @@ export function convertUrl(string) {
   return string;
 }
 
-
 export function getDateActual() {
   const date = new Date();
-  return date.getDate() + '/' + ((date.getMonth() < 9 ? '0': '') + (date.getMonth()+1))  + '/' + date.getFullYear();
+  return ((date.getDate() < 9 ? '0': '') + (date.getDate())) + '/' + ((date.getMonth() < 9 ? '0': '') + (date.getMonth()+1))  + '/' + date.getFullYear();
 }
 
 export function getDayWeekNumber(){
