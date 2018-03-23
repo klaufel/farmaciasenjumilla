@@ -5,7 +5,7 @@ import FarmaciaGuardia from './components/FarmaciaGuardia';
 import FarmaciasGuardiaListado from './components/FarmaciasGuardiaListado';
 import Farmacias from './components/Farmacias';
 
-const version = "v0.0.1a";
+const version = "v0.0.2a";
 
 class App extends Component {
 
