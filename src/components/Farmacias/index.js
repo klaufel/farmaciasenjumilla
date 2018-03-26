@@ -7,7 +7,7 @@ class Farmacias extends Component {
   render() {
     return (
       <div>
-        <h3 className="title">Listado de farmacias de Jumilla:</h3>
+        <h3 className="title">Listado de todas las farmacias:</h3>
         <FarmaciasRow farmaciasListado={pharmaciesListJSON} />
       </div>
     )
@@ -19,7 +19,14 @@ function isFarmaciaGuardia(idFarmacia) {
   const dateIndex = helper.getIndex(dateActual, pharmaciesDateJSON, 'date');
   const dateId = pharmaciesDateJSON[dateIndex].id;
 
-  const farmaciaIndex = helper.getIndex(dateId, pharmaciesListJSON, 'id')
+  let farmaciaIndex = helper.getIndex(dateId, pharmaciesListJSON, 'id')
+
+  const hourActual = helper.getHourActual();
+
+  if(hourActual >= 0 && hourActual < 9) {
+    farmaciaIndex = farmaciaIndex - 1;
+  }
+  
   const farmaciaActual = pharmaciesListJSON[farmaciaIndex];
 
   if(idFarmacia === farmaciaActual.id) {

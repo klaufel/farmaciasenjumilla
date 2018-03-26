@@ -31,6 +31,14 @@ export function getDateActual() {
   return ((date.getDate() < 9 ? '0': '') + (date.getDate())) + '/' + ((date.getMonth() < 9 ? '0': '') + (date.getMonth()+1))  + '/' + date.getFullYear();
 }
 
+
+export function getHourActual() {
+  const date = new Date();
+  const dateHours = date.getHours();
+  return dateHours;
+}
+
+
 export function getDayWeekNumber(){
   const date = new Date();
   const days = [7, 1, 2, 3, 4, 5, 6];

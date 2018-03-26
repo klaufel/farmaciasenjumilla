@@ -2,10 +2,10 @@ import React, { Component } from 'react';
 import Header from './components/Header';
 import Footer from './components/Footer';
 import FarmaciaGuardia from './components/FarmaciaGuardia';
-import FarmaciasGuardiaListado from './components/FarmaciasGuardiaListado';
+//import FarmaciasGuardiaListado from './components/FarmaciasGuardiaListado';
 import Farmacias from './components/Farmacias';
 
-const version = "v0.0.2a";
+const version = "v0.0.3a";
 
 class App extends Component {
 
@@ -18,11 +18,13 @@ class App extends Component {
             <FarmaciaGuardia />
           </div>
         </div>
+       {/*
         <div className="farmacias-guardia-listado-content">
           <div className="container">
             <FarmaciasGuardiaListado />
           </div>
         </div>
+        */}        
         <div className="farmacias-content">
           <div className="container">
             <Farmacias />

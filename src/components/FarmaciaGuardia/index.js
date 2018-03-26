@@ -4,7 +4,6 @@ import pharmaciesDateJSON from '../../json/pharmaciesDate.json';
 import pharmaciesListJSON from '../../json/pharmaciesList.json';
 
 
-
 function farmaciaWeb(web) {
   if(web) {
     return (
@@ -19,7 +18,16 @@ function getFarmaciaGuardia() {
   const dateIndex = helper.getIndex(dateActual, pharmaciesDateJSON, 'date');
   const dateId = pharmaciesDateJSON[dateIndex].id;
 
-  const farmaciaIndex = helper.getIndex(dateId, pharmaciesListJSON, 'id')
+  let farmaciaIndex = helper.getIndex(dateId, pharmaciesListJSON, 'id');
+
+  const hourActual = helper.getHourActual();
+  console.log(hourActual);
+  console.log(farmaciaIndex);
+  if(hourActual >= 0 && hourActual < 9) {
+    farmaciaIndex = farmaciaIndex - 1;
+  }
+  console.log(farmaciaIndex);
+
   const farmaciaActual = pharmaciesListJSON[farmaciaIndex];
 
   const farmacia = {
@@ -53,7 +61,7 @@ class FarmaciaGuardia extends Component {
         address: farmaciaActual.address,
         phone: farmaciaActual.phone
       })
-    }, 10000)
+    }, 1000)
   }
 
   render() {
@@ -61,7 +69,7 @@ class FarmaciaGuardia extends Component {
       <div className="farmacia-guardia">
         <div className="row">
           <div className="col col-sm-7">
-            <h3 className="farmacia-guardia__title">Farmacia de guardia:</h3>
+            <h3 className="farmacia-guardia__title">Farmacia de guardia abierta actualmente:</h3>
             <p>Hoy {helper.getDayWeekString()}, {helper.getDateActual()}</p>
             <h1 style={{fontWeight: 'bold'}}>{this.state.name}</h1>
             <p><a href={"https://www.google.es/maps/search/" + this.state.address} target="_blank">{this.state.address}</a></p>
