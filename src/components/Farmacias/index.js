@@ -26,7 +26,7 @@ function isFarmaciaGuardia(idFarmacia) {
   if(hourActual >= 0 && hourActual < 9) {
     farmaciaIndex = farmaciaIndex - 1;
   }
-  
+
   const farmaciaActual = pharmaciesListJSON[farmaciaIndex];
 
   if(idFarmacia === farmaciaActual.id) {
@@ -48,12 +48,6 @@ function isOpen(open, close) {
   if(dateActual >= open && dateActual < close) {
     return true;
   }
-}
-
-function convertDateToNumber(date) {
-  const dateSplit = date.split(':');
-  const dateNumber = dateSplit[0] + '' + dateSplit[1];
-  return parseInt(dateNumber, 10);
 }
 
 
@@ -90,25 +84,62 @@ class FarmaciasRow extends Component {
 }
 
 
+// function getMinutesTimeOut(timeOut) {
+//   const timeOutMinutes = (timeOut * 30) / 70;
+//   return timeOutMinutes;
+// }
+
+
 
 function getFarmaciaAbiertaStatus(id, morningOpening, morningClosing, lateOpening, lateClosing) {
   var farmaciaAbierta = {
     'state': 'Abierta',
-    'color': 'green'
+    'color': '#40ba8c'
   };
 
+  const dateNumber = {
+    'morningOpening': helper.convertDateToNumber(morningOpening),
+    'morningClosing': helper.convertDateToNumber(morningClosing),
+
+    'lateOpening': helper.convertDateToNumber(lateOpening),
+    'lateClosing': helper.convertDateToNumber(lateClosing)
+  }
+
+  const dateActual = helper.getHourMinutesActual();
+
   if(isFarmaciaGuardia(id)) {
-    farmaciaAbierta.state = 'Abierta (Farmacia de Guardia)';
-    farmaciaAbierta.color = 'green';
-  } else if(isOpen(convertDateToNumber(morningOpening), convertDateToNumber(morningClosing)) ) {
-    farmaciaAbierta.state = 'Abierta';
-    farmaciaAbierta.color = 'green';
-  } else if(isOpen(convertDateToNumber(lateOpening), convertDateToNumber(lateClosing)) ) {
-    farmaciaAbierta.state = 'Abierta';
-    farmaciaAbierta.color = 'green';
+    farmaciaAbierta.status = 'open-guard';
+    farmaciaAbierta.text = 'Abierta ahora (Farmacia de Guardia)';
+    farmaciaAbierta.color = '#40ba8c';
+  } else if(isOpen(dateNumber.morningOpening, dateNumber.morningClosing) ) {
+    farmaciaAbierta.status = 'open-morning';
+    farmaciaAbierta.text = 'Abierta ahora';
+    farmaciaAbierta.color = '#40ba8c';
+
+    const timeOut = dateNumber.morningClosing - dateActual;
+    if(timeOut <= 70) {
+      const timeOutMinutes = 60 - dateActual.toString().substring(2, 4);
+      farmaciaAbierta.time = ', cierra en ' + Math.round(timeOutMinutes) + ' minutos';
+    }
+  } else if(isOpen(dateNumber.lateOpening, dateNumber.lateClosing) ) {
+    farmaciaAbierta.status = 'open-late';
+    farmaciaAbierta.text = 'Abierta ahora';
+    farmaciaAbierta.color = '#40ba8c';
+
+    const timeOut = dateNumber.lateClosing - dateActual;
+    if(timeOut <= 70) {
+      farmaciaAbierta.time = ', cierra en ' + Math.round(timeOut) + ' minutos';
+    }
   } else {
-    farmaciaAbierta.state = 'Cerrada';
-    farmaciaAbierta.color = 'red';
+    farmaciaAbierta.status = 'close';
+    farmaciaAbierta.text = 'Cerrada ahora';
+    farmaciaAbierta.color = '#fc5d4a';
+
+    if(dateActual >= dateNumber.morningClosing && dateActual < dateNumber.lateClosing) {
+      farmaciaAbierta.time = ', abre a las ' + lateOpening;
+    } else {
+      farmaciaAbierta.time = ', abre a las ' + morningOpening;
+    }
   }
   return farmaciaAbierta;
 }
@@ -163,25 +194,88 @@ class FarmaciasCol extends Component {
         )
       })
 
-    }, 1000);
+    }, 5000);
   }
 
   render() {
+    let hourMorning, hourLate;
+
+    if( this.state.morningOpening !== '' && this.state.morningClosing !== '') {
+      hourMorning = this.state.morningOpening + ' a ' + this.state.morningClosing;
+    }
+    if( this.state.lateOpening !== '' && this.state.lateClosing !== '') {
+      hourLate = ' y ' + this.state.lateOpening + ' a ' + this.state.lateClosing;
+    }
+
     return(
       <div className="farmacia__item">
         <div className="farmacia__content">
           <h4 className="farmacia__title">{this.state.name}</h4>
-          <p><a href={"https://www.google.es/maps/search/" + this.state.address} target="_blank">{this.state.address}</a></p>
-          <p><a href={"tel:" + helper.removeWhiteSpaces(this.state.phone)}>{this.state.phone}</a> {farmaciaWeb(this.state.web)}</p>
-          <p>Horario, hoy {this.state.dayWeekNumber}:&nbsp;
-            {this.state.morningOpening} a {this.state.morningClosing}
-            &nbsp;y&nbsp;
-            {this.state.lateOpening} a {this.state.lateClosing}
+          <p>
+            <a href={"https://www.google.es/maps/search/" + this.state.address} target="_blank">
+              <span className="c-icon c-icon--address"></span>
+              {this.state.address}
+            </a>
           </p>
-          <p style={{fontWeight: 'bold', color: this.state.farmaciaAbierta.color}}>{this.state.farmaciaAbierta.state}</p>
+          <p>
+            <a href={"tel:" + helper.removeWhiteSpaces(this.state.phone)}>
+              <span className="c-icon c-icon--phone"></span>
+              {this.state.phone}
+            </a>
+            {farmaciaWeb(this.state.web)}</p>
+          <p><span className="c-icon c-icon--clock"></span> Hoy {this.state.dayWeekNumber}:&nbsp;
+            {hourMorning}{hourLate}
+          </p>
+          <p>
+            <span class="c-tag" style={{backgroundColor: this.state.farmaciaAbierta.color}}>{this.state.farmaciaAbierta.text} </span>
+            <FarmaciasStatus
+              status={this.state.farmaciaAbierta.status}
+              morningClosing={this.state.morningClosing}
+              lateClosing={this.state.lateClosing}
+            />
+          </p>
         </div>
       </div>
     );
+  }
+}
+
+
+function farmaciaStatusTimeOut(closing) {
+  const dateActual = new Date();
+  const dateActualH = dateActual.getHours();
+  const dateActualM = dateActual.getMinutes();
+  // Hours are worth 60 minutes.
+  const dateActualMinutes = (+dateActualH) * 60 + (+dateActualM);
+
+  const dateClosing = closing.split(':');
+  const dateClosingH = parseInt(dateClosing[0], 10);
+  const dateClosingM = parseInt(dateClosing[1], 10);
+
+  const dateClosingMinutes = (+dateClosingH) * 60 + (+dateClosingM);
+
+  const dateDifference = dateClosingMinutes - dateActualMinutes;
+
+  if( dateDifference <= 30) {
+    return 'Cierra en ' + dateDifference + ' minutos';
+  }
+}
+
+class FarmaciasStatus extends Component {
+  render() {
+    var text;
+    if(this.props.status === 'open-morning' || this.props.status === 'open-late') {
+      if(this.props.status === 'open-morning') {
+        text = farmaciaStatusTimeOut(this.props.morningClosing);
+      } else {
+        text = farmaciaStatusTimeOut(this.props.lateClosing);
+      }
+      return(
+        <span className="c-tag__text">{text}</span>
+      );
+    } else {
+      return false;
+    }
   }
 }
 

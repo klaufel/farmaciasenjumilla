@@ -8,7 +8,7 @@ class Header extends Component {
         <div className="container">
           <div className="navbar-header">
 
-            <span className="navbar-brand"><img src={logo} width="24" height="24" className="App-logo" alt="logo" /> Farmacia de Guardia Jumilla</span>
+            <span className="navbar-brand"><img src={logo} width="26" height="26" className="App-logo" alt="logo" /> Farmacias en Jumilla</span>
           </div>
         </div>
       </nav>

@@ -31,6 +31,25 @@ export function getDateActual() {
   return ((date.getDate() < 9 ? '0': '') + (date.getDate())) + '/' + ((date.getMonth() < 9 ? '0': '') + (date.getMonth()+1))  + '/' + date.getFullYear();
 }
 
+export function getHourMinutesActual() {
+  const date = new Date();
+
+  var dateHours = date.getHours();
+  var dateMinutes = date.getMinutes();
+  if (date.getMinutes() < 10) {
+    dateMinutes = '0' + date.getMinutes();
+  }
+  const getHourMinutesActual = parseInt(dateHours + '' + dateMinutes, 10);
+  return getHourMinutesActual
+}
+
+
+export function convertDateToNumber(date) {
+  const dateSplit = date.split(':');
+  const dateNumber = dateSplit[0] + '' + dateSplit[1];
+  return parseInt(dateNumber, 10);
+}
+
 
 export function getHourActual() {
   const date = new Date();

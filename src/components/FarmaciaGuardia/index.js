@@ -21,12 +21,9 @@ function getFarmaciaGuardia() {
   let farmaciaIndex = helper.getIndex(dateId, pharmaciesListJSON, 'id');
 
   const hourActual = helper.getHourActual();
-  console.log(hourActual);
-  console.log(farmaciaIndex);
   if(hourActual >= 0 && hourActual < 9) {
     farmaciaIndex = farmaciaIndex - 1;
   }
-  console.log(farmaciaIndex);
 
   const farmaciaActual = pharmaciesListJSON[farmaciaIndex];
 
@@ -69,12 +66,17 @@ class FarmaciaGuardia extends Component {
       <div className="farmacia-guardia">
         <div className="row">
           <div className="col col-sm-7">
-            <h3 className="farmacia-guardia__title">Farmacia de guardia abierta actualmente:</h3>
-            <p>Hoy {helper.getDayWeekString()}, {helper.getDateActual()}</p>
+            <h3 className="farmacia-guardia__title">Farmacia de guardia abierta:</h3>
+            <p><span className="c-icon c-icon--clock"></span> Hoy {helper.getDayWeekString()}, {helper.getDateActual()}</p>
             <h1 style={{fontWeight: 'bold'}}>{this.state.name}</h1>
-            <p><a href={"https://www.google.es/maps/search/" + this.state.address} target="_blank">{this.state.address}</a></p>
-            <p><a href={"tel:" + helper.removeWhiteSpaces(this.state.phone)}>{this.state.phone}</a> {farmaciaWeb(this.state.web)}</p>
-            <p style={{fontWeight: 'bold', color: 'green'}}>Abierta (Farmacia de Guardia)</p>
+            <p>
+              <a href={"https://www.google.es/maps/search/" + this.state.address} target="_blank">
+              <span className="c-icon c-icon--address"></span>
+              {this.state.address}
+              </a>
+            </p>
+            <p><a href={"tel:" + helper.removeWhiteSpaces(this.state.phone)}><span className="c-icon c-icon--phone"></span> {this.state.phone}</a> {farmaciaWeb(this.state.web)}</p>
+            <span class="c-tag" style={{backgroundColor: '#40ba8c'}}>Abierta ahora (Farmacia de Guardia)</span>
             <p className="farmacia-guardia__info">Es recomendable llamar al número de teléfono de la farmacia para confirmar el turno de guardia.</p>
           </div>
           <div className="col col-sm-5">
