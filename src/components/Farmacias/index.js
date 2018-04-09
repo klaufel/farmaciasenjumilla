@@ -227,7 +227,7 @@ class FarmaciasCol extends Component {
             {hourMorning}{hourLate}
           </p>
           <p>
-            <span class="c-tag" style={{backgroundColor: this.state.farmaciaAbierta.color}}>{this.state.farmaciaAbierta.text} </span>
+            <span className="c-tag" style={{backgroundColor: this.state.farmaciaAbierta.color}}>{this.state.farmaciaAbierta.text} </span>
             <FarmaciasStatus
               status={this.state.farmaciaAbierta.status}
               morningClosing={this.state.morningClosing}

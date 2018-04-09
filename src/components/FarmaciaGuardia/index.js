@@ -76,7 +76,7 @@ class FarmaciaGuardia extends Component {
               </a>
             </p>
             <p><a href={"tel:" + helper.removeWhiteSpaces(this.state.phone)}><span className="c-icon c-icon--phone"></span> {this.state.phone}</a> {farmaciaWeb(this.state.web)}</p>
-            <span class="c-tag" style={{backgroundColor: '#40ba8c'}}>Abierta ahora (Farmacia de Guardia)</span>
+            <span className="c-tag" style={{backgroundColor: '#40ba8c'}}>Abierta ahora (Farmacia de Guardia)</span>
             <p className="farmacia-guardia__info">Es recomendable llamar al número de teléfono de la farmacia para confirmar el turno de guardia.</p>
           </div>
           <div className="col col-sm-5">
