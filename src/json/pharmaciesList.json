@@ -2,9 +2,13 @@
   {
     "id": 1,
     "name": "Manuel Guillén",
-    "address": "Calle Cánovas del Castillo, 22, 30520 Jumilla, Murcia",
     "phone": "968 78 01 65",
     "web": "https://www.farmaciaguillen.com/",
+    "address": "Calle Cánovas del Castillo, 22, 30520 Jumilla, Murcia",
+    "map": {
+      "lat": 38.4744537,
+      "lng": -1.3322219
+    },
     "hours": {
       "1": {
         "morning": {
@@ -81,9 +85,13 @@
   {
     "id": 2,
     "name": "Miguel Cambronero",
-    "address": "Calle Ortega y Gasset, 36, 30520 Jumilla, Murcia",
     "phone": "968 78 28 01",
     "web": "",
+    "address": "Calle Ortega y Gasset, 36, 30520 Jumilla, Murcia",
+    "map": {
+      "lat": 38.4785427,
+      "lng": -1.3205845
+    },
     "hours": {
       "1": {
         "morning": {
@@ -160,9 +168,13 @@
   {
     "id": 3,
     "name": "Pedro Soriano",
-    "address": "Av. de Levante, 30520 Jumilla, Murcia",
     "phone": "968 78 00 05",
     "web": "",
+    "address": "Av. de Levante, 30520 Jumilla, Murcia",
+    "map": {
+      "lat": 38.4742964,
+      "lng": -1.327671
+    },
     "hours": {
       "1": {
         "morning": {
@@ -239,9 +251,13 @@
   {
     "id": 4,
     "name": "Aurora Azorín",
-    "address": "Calle Cánovas del Castillo, 50, 30520 Jumilla, Murcia",
     "phone": "968 78 01 30",
     "web": "",
+    "address": "Calle Cánovas del Castillo, 50, 30520 Jumilla, Murcia",
+    "map": {
+      "lat": 38.474619,
+      "lng": -1.3307923
+    },
     "hours": {
       "1": {
         "morning": {
@@ -318,9 +334,13 @@
   {
     "id": 5,
     "name": "Diego Soriano",
-    "address": "Calle Cánovas del Castillo, 109, 30520 Jumilla, Murcia",
     "phone": "968 78 25 08",
     "web": "",
+    "address": "Calle Cánovas del Castillo, 109, 30520 Jumilla, Murcia",
+    "map": {
+      "lat": 38.4761594,
+      "lng": -1.3254954
+    },
     "hours": {
       "1": {
         "morning": {
@@ -397,9 +417,13 @@
   {
     "id": 6,
     "name": "Manuel Mazuelas",
-    "address": "Calle Barón del Solar, 30520 Jumilla, Murcia",
     "phone": "968 78 23 15",
     "web": "",
+    "address": "Calle Barón del Solar, 30520 Jumilla, Murcia",
+    "map": {
+      "lat": 38.4747129,
+      "lng": -1.33688
+    },
     "hours": {
       "1": {
         "morning": {
@@ -476,9 +500,13 @@
   {
     "id": 7,
     "name": "Alberto Agulló",
-    "address": "Calle Canalejas, 38, 30520 Jumilla, Murcia",
     "phone": "968 78 00 88",
     "web": "",
+    "address": "Calle Canalejas, 38, 30520 Jumilla, Murcia",
+    "map": {
+      "lat": 38.4758505,
+      "lng": -1.3311933
+    },
     "hours": {
       "1": {
         "morning": {

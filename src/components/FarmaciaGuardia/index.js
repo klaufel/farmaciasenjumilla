@@ -1,7 +1,33 @@
 import React, { Component } from 'react';
+import { compose, withProps } from 'recompose';
+import {
+  withScriptjs,
+  withGoogleMap,
+  GoogleMap,
+  Marker
+} from 'react-google-maps';
 import * as helper from '../../helper.js';
 import pharmaciesDateJSON from '../../json/pharmaciesDate.json';
 import pharmaciesListJSON from '../../json/pharmaciesList.json';
+
+const debug = withProps(console.log)
+
+const MyMapComponent = compose(
+  withProps({
+    googleMapURL:
+      "https://maps.googleapis.com/maps/api/js?key=AIzaSyBlX6u11oFQ8wP1LPJs38sf1hKnLUhwom0",
+    loadingElement: <div style={{ height: `100%` }} />,
+    containerElement: <div style={{ height: `300px` }} />,
+    mapElement: <div style={{ height: `100%` }} />
+  }),
+  withScriptjs,
+  withGoogleMap,
+  debug
+)(props => (
+  <GoogleMap defaultZoom={15} defaultCenter={{ lat: props.lat, lng: props.lng }}>
+    <Marker position={{ lat: props.lat, lng: props.lng }} />
+  </GoogleMap>
+));
 
 
 function farmaciaWeb(web) {
@@ -31,7 +57,11 @@ function getFarmaciaGuardia() {
     name: farmaciaActual.name,
     address: farmaciaActual.address,
     phone: farmaciaActual.phone,
-    web: farmaciaActual.web
+    web: farmaciaActual.web,
+    map: {
+      lat: farmaciaActual.map.lat,
+      lng: farmaciaActual.map.lng
+    }
   }
   return farmacia;
 }
@@ -46,7 +76,11 @@ class FarmaciaGuardia extends Component {
       name: farmaciaActual.name,
       address: farmaciaActual.address,
       phone: farmaciaActual.phone,
-      web: farmaciaActual.web
+      web: farmaciaActual.web,
+      map: {
+        lat: farmaciaActual.map.lat,
+        lng: farmaciaActual.map.lng
+      }
     }
   }
 
@@ -56,7 +90,12 @@ class FarmaciaGuardia extends Component {
       this.setState({
         name: farmaciaActual.name,
         address: farmaciaActual.address,
-        phone: farmaciaActual.phone
+        phone: farmaciaActual.phone,
+        web: farmaciaActual.web,
+        map: {
+          lat: farmaciaActual.map.lat,
+          lng: farmaciaActual.map.lng
+        }
       })
     }, 1000)
   }
@@ -80,16 +119,19 @@ class FarmaciaGuardia extends Component {
             <p className="farmacia-guardia__info">Es recomendable llamar al número de teléfono de la farmacia para confirmar el turno de guardia.</p>
           </div>
           <div className="col col-sm-5">
+            {/*
             <iframe title="test"
               width="100%"
               height="300"
               frameBorder="0"
               src={
-                "https://www.google.com/maps/embed/v1/place?key=AIzaSyAinME4vNifx6zHH5LgovkSnqiu2lMiV9Q" +
+                "https://www.google.com/maps/embed/v1/place?key=AIzaSyBlX6u11oFQ8wP1LPJs38sf1hKnLUhwom0" +
                 "&q=" + helper.convertUrl('Farmacia+' + this.state.name + this.state.address) +
               ""}
               allowFullScreen>
             </iframe>
+            */}
+            <MyMapComponent key="map" lat={this.state.map.lat} lng={this.state.map.lng} />
           </div>
         </div>
       </div>
