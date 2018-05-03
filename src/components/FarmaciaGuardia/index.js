@@ -10,21 +10,21 @@ import * as helper from '../../helper.js';
 import pharmaciesDateJSON from '../../json/pharmaciesDate.json';
 import pharmaciesListJSON from '../../json/pharmaciesList.json';
 
-const debug = withProps(console.log)
+//const debug = withProps(console.log)
 
 const MyMapComponent = compose(
   withProps({
     googleMapURL:
       "https://maps.googleapis.com/maps/api/js?key=AIzaSyBlX6u11oFQ8wP1LPJs38sf1hKnLUhwom0",
-    loadingElement: <div style={{ height: `100%` }} />,
-    containerElement: <div style={{ height: `300px` }} />,
-    mapElement: <div style={{ height: `100%` }} />
+    loadingElement: <div style={{ height: '100%' }} />,
+    containerElement: <div style={{ height: '300px' }} />,
+    mapElement: <div style={{ height: '100%' }} />
   }),
   withScriptjs,
   withGoogleMap,
-  debug
+  //debug
 )(props => (
-  <GoogleMap defaultZoom={15} defaultCenter={{ lat: props.lat, lng: props.lng }}>
+  <GoogleMap defaultZoom={16} defaultCenter={{ lat: props.lat, lng: props.lng }}>
     <Marker position={{ lat: props.lat, lng: props.lng }} />
   </GoogleMap>
 ));
