@@ -29,6 +29,9 @@ class App extends Component {
           <div className="container">
             <Farmacias />
           </div>
+          <div className="container" style={{textAlign: 'center'}}>
+          <span style={{fontStyle: 'italic'}} >Los horarios y el estado de apertura o cierre pueden variar dependiendo de los días festivos.</span>
+          </div>
         </div>
         <Footer version={version} />
       </div>
