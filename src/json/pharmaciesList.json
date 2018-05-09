@@ -6,8 +6,8 @@
     "web": "https://www.farmaciaguillen.com/",
     "address": "C/ Cánovas del Castillo, 22, 30520 Jumilla, Murcia",
     "map": {
-      "lat": 38.4744537,
-      "lng": -1.3322219
+      "lat": 38.474454,
+      "lng": -1.330033
     },
     "hours": {
       "1": {
@@ -89,8 +89,8 @@
     "web": "",
     "address": "C/ Ortega y Gasset, 36, 30520 Jumilla, Murcia",
     "map": {
-      "lat": 38.4785427,
-      "lng": -1.3205845
+      "lat": 38.478538,
+      "lng": -1.318396
     },
     "hours": {
       "1": {
@@ -170,10 +170,10 @@
     "name": "Pedro Soriano",
     "phone": "968 78 00 05",
     "web": "",
-    "address": "Av. de Levante, 30520 Jumilla, Murcia",
+    "address": "Av. de Levante, 31, 30520 Jumilla, Murcia",
     "map": {
-      "lat": 38.4742964,
-      "lng": -1.327671
+      "lat": 38.474409,
+      "lng": -1.325673
     },
     "hours": {
       "1": {
@@ -255,8 +255,8 @@
     "web": "",
     "address": "C/ Cánovas del Castillo, 50, 30520 Jumilla, Murcia",
     "map": {
-      "lat": 38.474619,
-      "lng": -1.3307923
+      "lat": 38.474615,
+      "lng": -1.328604
     },
     "hours": {
       "1": {
@@ -338,8 +338,8 @@
     "web": "",
     "address": "C/ Cánovas del Castillo, 109, 30520 Jumilla, Murcia",
     "map": {
-      "lat": 38.4761594,
-      "lng": -1.3254954
+      "lat": 38.476155,
+      "lng": -1.323307
     },
     "hours": {
       "1": {
@@ -419,10 +419,10 @@
     "name": "Manuel Mazuelas",
     "phone": "968 78 23 15",
     "web": "",
-    "address": "C/ Barón del Solar, 30520 Jumilla, Murcia",
+    "address": "C/ Barón del Solar, 20, 30520 Jumilla, Murcia",
     "map": {
-      "lat": 38.4747129,
-      "lng": -1.33688
+      "lat": 38.473864,
+      "lng": -1.332654
     },
     "hours": {
       "1": {
@@ -504,8 +504,8 @@
     "web": "",
     "address": "C/ Canalejas, 38, 30520 Jumilla, Murcia",
     "map": {
-      "lat": 38.4758505,
-      "lng": -1.3311933
+      "lat": 38.475846,
+      "lng": -1.329005
     },
     "hours": {
       "1": {

@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Offline, Online } from 'react-detect-offline';
+import { compose, withProps } from 'recompose';
 import {
   withScriptjs,
   withGoogleMap,
@@ -9,8 +9,8 @@ import {
 import * as helper from '../../helper.js';
 import pharmaciesDateJSON from '../../json/pharmaciesDate.json';
 import pharmaciesListJSON from '../../json/pharmaciesList.json';
+//const debug = withProps(console.log);
 
-//const debug = withProps(console.log)
 
 const MyMapComponent = withScriptjs(withGoogleMap((props) =>
   <GoogleMap
@@ -122,21 +122,20 @@ class FarmaciaGuardia extends Component {
               allowFullScreen>
             </iframe>
             */}
-            <Online>
-              <MyMapComponent
-                isMarkerShown
-                googleMapURL="https://maps.googleapis.com/maps/api/js?v=3.exp&key=AIzaSyBlX6u11oFQ8wP1LPJs38sf1hKnLUhwom0&libraries=places"
-                loadingElement={<div style={{ height: `100%` }} />}
-                containerElement={<div style={{ height: `300px` }} />}
-                mapElement={<div style={{ height: `100%` }} />}
-                key="map"
-                lat={this.state.map.lat}
-                lng={this.state.map.lng}
-              />
-            </Online>
-            <Offline>
-              <span>Para poder ver el mapa con la localización de la farmacia debes de conectar tu dispositivo a internet.</span>
-            </Offline>
+
+
+            <MyMapComponent
+              isMarkerShown
+              googleMapURL="https://maps.googleapis.com/maps/api/js?v=3.exp&key=AIzaSyBlX6u11oFQ8wP1LPJs38sf1hKnLUhwom0&libraries=places"
+              loadingElement={<div style={{ height: `100%` }} />}
+              containerElement={<div style={{ height: `300px` }} />}
+              mapElement={<div style={{ height: `100%` }} />}
+              key="map"
+              lat={this.state.map.lat}
+              lng={this.state.map.lng}
+            />
+
+
           </div>
         </div>
       </div>

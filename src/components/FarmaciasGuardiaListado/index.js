@@ -48,8 +48,9 @@ class FarmaciasGuardiaListado extends Component {
 class FarmaciasGuardiaListadoRow extends Component {
   constructor(props) {
     super(props);
-    const dateIndex = getDateIndex(-1);
-    const dateLimit = dateIndex + 5;
+    const dateIndex = getDateIndex(0);
+    const dateLimit = dateIndex + 31;
+
 
     this.item = this.props.farmaciasListado.slice(dateIndex, dateLimit).map((item, idx) => {
       return(
@@ -99,14 +100,12 @@ class FarmaciasGuardiaListadoCol extends Component {
   render() {
     var nameDay = '';
     if(this.state.key === 0) {
-      nameDay = 'Ayer ';
-    } else if(this.state.key === 1) {
       nameDay = 'Hoy ';
-    } else if(this.state.key === 2) {
+    } else if(this.state.key === 1) {
       nameDay = 'Mañana ';
     }
     return(
-      <tr className={(this.state.key === 1 ? 'is-actual' : '')}>
+      <tr className={(this.state.key === 0 ? 'is-actual' : '')}>
         <td>{nameDay}{this.state.date}</td>
         <td>{this.state.name}</td>
         <td><a href={"https://www.google.es/maps/search/" + this.state.address} target="_blank">{this.state.address}</a></td>
