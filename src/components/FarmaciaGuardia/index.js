@@ -50,6 +50,7 @@ function getFarmaciaGuardia() {
     phone: farmaciaActual.phone,
     web: farmaciaActual.web,
     map: {
+      url: farmaciaActual.map.url,
       lat: farmaciaActual.map.lat,
       lng: farmaciaActual.map.lng
     }
@@ -69,6 +70,7 @@ class FarmaciaGuardia extends Component {
       phone: farmaciaActual.phone,
       web: farmaciaActual.web,
       map: {
+        url: farmaciaActual.map.url,
         lat: farmaciaActual.map.lat,
         lng: farmaciaActual.map.lng
       }
@@ -84,6 +86,7 @@ class FarmaciaGuardia extends Component {
         phone: farmaciaActual.phone,
         web: farmaciaActual.web,
         map: {
+          url: farmaciaActual.map.url,
           lat: farmaciaActual.map.lat,
           lng: farmaciaActual.map.lng
         }
@@ -100,7 +103,7 @@ class FarmaciaGuardia extends Component {
             <p><span className="c-icon c-icon--clock"></span> Hoy {helper.getDayWeekString()}, {helper.getDateActual()}</p>
             <h1 style={{fontWeight: 'bold'}}>{this.state.name}</h1>
             <p>
-              <a href={"https://www.google.es/maps/search/" + this.state.address} target="_blank">
+              <a href={this.state.map.url} target="_blank">
               <span className="c-icon c-icon--address"></span>
               {this.state.address}
               </a>

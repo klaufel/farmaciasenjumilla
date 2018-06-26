@@ -69,6 +69,7 @@ class FarmaciasRow extends Component {
           farmaciaId={item.id}
           farmaciaName={item.name}
           farmaciaAddress={item.address}
+          farmaciaMapUrl={item.map.url}
           farmaciaPhone={item.phone}
           farmaciaWeb={item.web}
           farmaciaHours={item.hours}
@@ -154,6 +155,7 @@ class FarmaciasCol extends Component {
       dayWeekNumber:  helper.getDayWeekString(),
       name: this.props.farmaciaName,
       address: this.props.farmaciaAddress,
+      mapUrl: this.props.farmaciaMapUrl,
       phone: this.props.farmaciaPhone,
       web: this.props.farmaciaWeb,
       morningOpening: this.props.farmaciaHours[dayWeekNumber].morning.opening,
@@ -179,6 +181,7 @@ class FarmaciasCol extends Component {
         dayWeekNumber:  helper.getDayWeekString(),
         name: this.props.farmaciaName,
         address: this.props.farmaciaAddress,
+        mapUrl: this.props.farmaciaMapUrl,
         phone: this.props.farmaciaPhone,
         web: this.props.farmaciaWeb,
         morningOpening: this.props.farmaciaHours[dayWeekNumber].morning.opening,
@@ -212,7 +215,7 @@ class FarmaciasCol extends Component {
         <div className="farmacia__content">
           <h4 className="farmacia__title">{this.state.name}</h4>
           <p>
-            <a href={"https://www.google.es/maps/search/" + this.state.address} target="_blank">
+            <a href={this.state.mapUrl} target="_blank">
               <span className="c-icon c-icon--address"></span>
               {this.state.address}
             </a>
