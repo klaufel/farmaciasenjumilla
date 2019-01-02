@@ -32,15 +32,17 @@ function farmaciaWeb(web) {
 
 function getFarmaciaGuardia() {
   const dateActual = helper.getDateActual();
-  const dateIndex = helper.getIndex(dateActual, pharmaciesDateJSON, 'date');
+  let dateIndex = helper.getIndex(dateActual, pharmaciesDateJSON, 'date');
+  
+  const hourActual = helper.getHourActual();
+  if(hourActual >= 0 && hourActual < 9) {
+    dateIndex = dateIndex - 1;
+  }
+
   const dateId = pharmaciesDateJSON[dateIndex].id;
 
   let farmaciaIndex = helper.getIndex(dateId, pharmaciesListJSON, 'id');
 
-  const hourActual = helper.getHourActual();
-  if(hourActual >= 0 && hourActual < 9) {
-    farmaciaIndex = farmaciaIndex - 1;
-  }
 
   const farmaciaActual = pharmaciesListJSON[farmaciaIndex];
 
