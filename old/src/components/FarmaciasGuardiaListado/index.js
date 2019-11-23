@@ -1,16 +1,16 @@
-import React, { Component } from 'react';
-import * as helper from '../../helper.js';
-import pharmaciesDateJSON from '../../json/pharmaciesDate.json';
-import pharmaciesListJSON from '../../json/pharmaciesList.json';
+import React, { Component } from "react";
+import * as helper from "../../helper.js";
+import pharmaciesDateJSON from "../../json/pharmaciesDate.json";
+import pharmaciesListJSON from "../../json/pharmaciesList.json";
 
 function getDateIndex(slice = 0) {
   const dateActual = helper.getDateActual();
-  const dateIndex = helper.getIndex(dateActual, pharmaciesDateJSON, 'date');
+  const dateIndex = helper.getIndex(dateActual, pharmaciesDateJSON, "date");
   return dateIndex + slice;
 }
 
 function getFarmacia(farmaciaId) {
-  const farmaciaIndex = helper.getIndex(farmaciaId, pharmaciesListJSON, 'id');
+  const farmaciaIndex = helper.getIndex(farmaciaId, pharmaciesListJSON, "id");
   const farmaciaActual = pharmaciesListJSON[farmaciaIndex];
 
   const farmacia = {
@@ -18,10 +18,9 @@ function getFarmacia(farmaciaId) {
     name: farmaciaActual.name,
     address: farmaciaActual.address,
     phone: farmaciaActual.phone
-  }
+  };
   return farmacia;
 }
-
 
 class FarmaciasGuardiaListado extends Component {
   render() {
@@ -40,10 +39,9 @@ class FarmaciasGuardiaListado extends Component {
           <FarmaciasGuardiaListadoRow farmaciasListado={pharmaciesDateJSON} />
         </table>
       </div>
-    )
+    );
   }
 }
-
 
 class FarmaciasGuardiaListadoRow extends Component {
   constructor(props) {
@@ -51,24 +49,24 @@ class FarmaciasGuardiaListadoRow extends Component {
     const dateIndex = getDateIndex(0);
     const dateLimit = dateIndex + 31;
 
-
-    this.item = this.props.farmaciasListado.slice(dateIndex, dateLimit).map((item, idx) => {
-      return(
-        <FarmaciasGuardiaListadoCol
-          farmaciaDate={item.date}
-          farmaciaId={item.id}
-          farmaciaKey={idx}
-          key={idx}
-        />
-      )
-    });
+    this.item = this.props.farmaciasListado
+      .slice(dateIndex, dateLimit)
+      .map((item, idx) => {
+        return (
+          <FarmaciasGuardiaListadoCol
+            farmaciaDate={item.date}
+            farmaciaId={item.id}
+            farmaciaKey={idx}
+            key={idx}
+          />
+        );
+      });
   }
 
   render() {
-    return( <tbody>{this.item}</tbody> );
+    return <tbody>{this.item}</tbody>;
   }
 }
-
 
 class FarmaciasGuardiaListadoCol extends Component {
   constructor(props) {
@@ -81,11 +79,11 @@ class FarmaciasGuardiaListadoCol extends Component {
       name: farmaciaActual.name,
       address: farmaciaActual.address,
       phone: farmaciaActual.phone
-    }
+    };
   }
 
   componentDidMount() {
-    setInterval( () => {
+    setInterval(() => {
       const farmaciaActual = getFarmacia(this.props.farmaciaId);
       this.setState({
         key: this.props.farmaciaKey,
@@ -94,22 +92,36 @@ class FarmaciasGuardiaListadoCol extends Component {
         name: farmaciaActual.name,
         address: farmaciaActual.address,
         phone: farmaciaActual.phone
-      })
-    }, 1000)
+      });
+    }, 1000);
   }
   render() {
-    var nameDay = '';
-    if(this.state.key === 0) {
-      nameDay = 'Hoy ';
-    } else if(this.state.key === 1) {
-      nameDay = 'Mañana ';
+    var nameDay = "";
+    if (this.state.key === 0) {
+      nameDay = "Hoy ";
+    } else if (this.state.key === 1) {
+      nameDay = "Mañana ";
     }
-    return(
-      <tr className={(this.state.key === 0 ? 'is-actual' : '')}>
-        <td>{nameDay}{this.state.date}</td>
+    return (
+      <tr className={this.state.key === 0 ? "is-actual" : ""}>
+        <td>
+          {nameDay}
+          {this.state.date}
+        </td>
         <td>{this.state.name}</td>
-        <td><a href={"https://www.google.es/maps/search/" + this.state.address} target="_blank">{this.state.address}</a></td>
-        <td><a href={"tel:" + helper.removeWhiteSpaces(this.state.phone)}>{this.state.phone}</a></td>
+        <td>
+          <a
+            href={"https://www.google.es/maps/search/" + this.state.address}
+            target="_blank"
+          >
+            {this.state.address}
+          </a>
+        </td>
+        <td>
+          <a href={"tel:" + helper.removeWhiteSpaces(this.state.phone)}>
+            {this.state.phone}
+          </a>
+        </td>
       </tr>
     );
   }

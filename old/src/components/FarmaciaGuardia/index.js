@@ -1,48 +1,53 @@
-import React, { Component } from 'react';
-import { Offline, Online } from 'react-detect-offline';
+import React, { Component } from "react";
+import { Offline, Online } from "react-detect-offline";
 import {
   withScriptjs,
   withGoogleMap,
   GoogleMap,
   Marker
-} from 'react-google-maps';
-import * as helper from '../../helper.js';
-import pharmaciesDateJSON from '../../json/pharmaciesDate.json';
-import pharmaciesListJSON from '../../json/pharmaciesList.json';
+} from "react-google-maps";
+import * as helper from "../../helper.js";
+import pharmaciesDateJSON from "../../json/pharmaciesDate.json";
+import pharmaciesListJSON from "../../json/pharmaciesList.json";
 
 //const debug = withProps(console.log)
 
-const MyMapComponent = withScriptjs(withGoogleMap((props) =>
-  <GoogleMap
-    defaultZoom={16}
-    defaultCenter={{ lat: props.lat, lng: props.lng }}
-  >
-    <Marker position={{ lat: props.lat, lng: props.lng }} />
-  </GoogleMap>
-))
+const MyMapComponent = withScriptjs(
+  withGoogleMap(props => (
+    <GoogleMap
+      defaultZoom={16}
+      defaultCenter={{ lat: props.lat, lng: props.lng }}
+    >
+      <Marker position={{ lat: props.lat, lng: props.lng }} />
+    </GoogleMap>
+  ))
+);
 
 function farmaciaWeb(web) {
-  if(web) {
+  if (web) {
     return (
-      <span>&nbsp;-&nbsp;&nbsp;<a href={web} target="_blank">Ver web</a></span>
+      <span>
+        &nbsp;-&nbsp;&nbsp;
+        <a href={web} target="_blank">
+          Ver web
+        </a>
+      </span>
     );
   }
 }
 
-
 function getFarmaciaGuardia() {
   const dateActual = helper.getDateActual();
-  let dateIndex = helper.getIndex(dateActual, pharmaciesDateJSON, 'date');
-  
+  let dateIndex = helper.getIndex(dateActual, pharmaciesDateJSON, "date");
+
   const hourActual = helper.getHourActual();
-  if(hourActual >= 0 && hourActual < 9) {
+  if (hourActual >= 0 && hourActual < 9) {
     dateIndex = dateIndex - 1;
   }
 
   const dateId = pharmaciesDateJSON[dateIndex].id;
 
-  let farmaciaIndex = helper.getIndex(dateId, pharmaciesListJSON, 'id');
-
+  let farmaciaIndex = helper.getIndex(dateId, pharmaciesListJSON, "id");
 
   const farmaciaActual = pharmaciesListJSON[farmaciaIndex];
 
@@ -56,13 +61,11 @@ function getFarmaciaGuardia() {
       lat: farmaciaActual.map.lat,
       lng: farmaciaActual.map.lng
     }
-  }
+  };
   return farmacia;
 }
 
-
 class FarmaciaGuardia extends Component {
-
   constructor() {
     super();
     const farmaciaActual = getFarmaciaGuardia();
@@ -76,11 +79,11 @@ class FarmaciaGuardia extends Component {
         lat: farmaciaActual.map.lat,
         lng: farmaciaActual.map.lng
       }
-    }
+    };
   }
 
   componentDidMount() {
-    setInterval( () => {
+    setInterval(() => {
       const farmaciaActual = getFarmaciaGuardia();
       this.setState({
         name: farmaciaActual.name,
@@ -92,8 +95,8 @@ class FarmaciaGuardia extends Component {
           lat: farmaciaActual.map.lat,
           lng: farmaciaActual.map.lng
         }
-      })
-    }, 1000)
+      });
+    }, 1000);
   }
 
   render() {
@@ -101,18 +104,34 @@ class FarmaciaGuardia extends Component {
       <div className="farmacia-guardia">
         <div className="row">
           <div className="col col-sm-7">
-            <h3 className="farmacia-guardia__title">Farmacia de guardia abierta:</h3>
-            <p><span className="c-icon c-icon--clock"></span> Hoy {helper.getDayWeekString()}, {helper.getDateActual()}</p>
-            <h1 style={{fontWeight: 'bold'}}>{this.state.name}</h1>
+            <h3 className="farmacia-guardia__title">
+              Farmacia de guardia abierta:
+            </h3>
+            <p>
+              <span className="c-icon c-icon--clock"></span> Hoy{" "}
+              {helper.getDayWeekString()}, {helper.getDateActual()}
+            </p>
+            <h1 style={{ fontWeight: "bold" }}>{this.state.name}</h1>
             <p>
               <a href={this.state.map.url} target="_blank">
-              <span className="c-icon c-icon--address"></span>
-              {this.state.address}
+                <span className="c-icon c-icon--address"></span>
+                {this.state.address}
               </a>
             </p>
-            <p><a href={"tel:" + helper.removeWhiteSpaces(this.state.phone)}><span className="c-icon c-icon--phone"></span> {this.state.phone}</a> {farmaciaWeb(this.state.web)}</p>
-            <span className="c-tag" style={{backgroundColor: '#40ba8c'}}>Abierta ahora (Farmacia de Guardia)</span>
-            <p className="farmacia-guardia__info">Es recomendable llamar al número de teléfono de la farmacia para confirmar el turno de guardia.</p>
+            <p>
+              <a href={"tel:" + helper.removeWhiteSpaces(this.state.phone)}>
+                <span className="c-icon c-icon--phone"></span>{" "}
+                {this.state.phone}
+              </a>{" "}
+              {farmaciaWeb(this.state.web)}
+            </p>
+            <span className="c-tag" style={{ backgroundColor: "#40ba8c" }}>
+              Abierta ahora (Farmacia de Guardia)
+            </span>
+            <p className="farmacia-guardia__info">
+              Es recomendable llamar al número de teléfono de la farmacia para
+              confirmar el turno de guardia.
+            </p>
           </div>
           <div className="col col-sm-5">
             {/*
@@ -140,12 +159,15 @@ class FarmaciaGuardia extends Component {
               />
             </Online>
             <Offline>
-              <span>Para poder ver el mapa con la localización de la farmacia debes de conectar tu dispositivo a internet.</span>
+              <span>
+                Para poder ver el mapa con la localización de la farmacia debes
+                de conectar tu dispositivo a internet.
+              </span>
             </Offline>
           </div>
         </div>
       </div>
-    )
+    );
   }
 }
 

@@ -1,14 +1,13 @@
-import React, { Component } from 'react';
-import Header from './components/Header';
-import Footer from './components/Footer';
-import FarmaciaGuardia from './components/FarmaciaGuardia';
+import React, { Component } from "react";
+import Header from "./components/Header";
+import Footer from "./components/Footer";
+import FarmaciaGuardia from "./components/FarmaciaGuardia";
 //import FarmaciasGuardiaListado from './components/FarmaciasGuardiaListado';
-import Farmacias from './components/Farmacias';
+import Farmacias from "./components/Farmacias";
 
 const version = "v0.8";
 
 class App extends Component {
-
   render() {
     return (
       <div className="App">
@@ -16,7 +15,7 @@ class App extends Component {
         <Main />
         <Footer version={version} />
       </div>
-    )
+    );
   }
 }
 
@@ -47,8 +46,11 @@ class Main extends Component {
           <div className="container">
             <Farmacias />
           </div>
-          <div className="container" style={{textAlign: 'center'}}>
-          <span style={{fontStyle: 'italic'}} >Los horarios y el estado de apertura o cierre pueden variar dependiendo de los días festivos.</span>
+          <div className="container" style={{ textAlign: "center" }}>
+            <span style={{ fontStyle: "italic" }}>
+              Los horarios y el estado de apertura o cierre pueden variar
+              dependiendo de los días festivos.
+            </span>
           </div>
         </div>
       </div>
