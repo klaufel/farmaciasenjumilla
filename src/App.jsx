@@ -5,12 +5,12 @@ function App() {
   const [pharmacies, setPharmacies] = useState([]);
   useEffect(() => {
     if (!pharmacies.length) {
-      fetch("http://api.farmaciasenjumilla.com/list.json")
+      fetch("https://api.farmaciasenjumilla.com/list.json")
         .then(response => {
           return response.json();
         })
-        .then(pharmacies => {
-          setPharmacies(pharmacies);
+        .then(list => {
+          setPharmacies(list);
         });
     }
   });
