@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import "./App.css";
+import Box from "./components/Box";
 
 function App() {
   const [pharmacies, setPharmacies] = useState([]);
@@ -11,6 +11,9 @@ function App() {
         })
         .then(list => {
           setPharmacies(list);
+        })
+        .catch(error => {
+          console.log(error);
         });
     }
   });
@@ -20,7 +23,7 @@ function App() {
       <header className="App-header">
         <p>Farmacias en Jumilla</p>
         {pharmacies.length ? (
-          pharmacies.map(item => <div key={item.name}>{item.name}</div>)
+          pharmacies.map(item => <Box key={item.name}>{item.name}</Box>)
         ) : (
           <div>cargando</div>
         )}
